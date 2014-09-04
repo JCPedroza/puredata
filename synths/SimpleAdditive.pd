@@ -1,4 +1,4 @@
-#N canvas 28 151 1170 504 10;
+#N canvas 89 137 1170 504 10;
 #X obj 515 332 dac~;
 #X obj 559 50 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
@@ -1048,17 +1048,18 @@
 #X connect 12 0 2 1;
 #X restore 600 267 pd ADSR;
 #X obj 823 7 vsl 15 128 0 127 0 0 empty empty A 0 -9 0 10 -262144 -1
+-1 1000 1;
+#X obj 860 6 vsl 15 128 0 500 0 0 empty empty D 0 -9 0 10 -262144 -1
+-1 4800 1;
+#X obj 895 7 vsl 15 128 0 1 0 0 empty empty S 0 -9 0 10 -262144 -1
 -1 0 1;
-#X obj 860 6 vsl 15 128 0 127 0 0 empty empty D 0 -9 0 10 -262144 -1
--1 0 1;
-#X obj 895 7 vsl 15 128 0 127 0 0 empty empty S 0 -9 0 10 -262144 -1
--1 0 1;
-#X obj 932 6 vsl 15 128 0 127 0 0 empty empty R 0 -9 0 10 -262144 -1
+#X obj 932 6 vsl 15 128 0 500 0 0 empty empty R 0 -9 0 10 -262144 -1
 -1 0 1;
 #X floatatom 818 146 5 0 0 0 - - -;
 #X floatatom 854 145 5 0 0 0 - - -;
 #X floatatom 891 145 5 0 0 0 - - -;
 #X floatatom 928 145 5 0 0 0 - - -;
+#X text 857 -29 amp envelope;
 #X connect 1 0 2 0;
 #X connect 1 0 6 4;
 #X connect 2 0 4 0;
