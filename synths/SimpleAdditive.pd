@@ -1,12 +1,12 @@
-#N canvas 22 85 1170 504 10;
+#N canvas 75 195 1170 504 10;
 #X obj 334 372 dac~;
 #N canvas 135 88 1121 654 harmonics 0;
 #X obj 20 89 inlet freq;
 #X obj 416 483 outlet~;
-#N canvas 212 151 862 502 h01 1;
-#X obj 128 258 osc~;
-#X msg 352 105 1;
-#X obj 71 158 *;
+#N canvas 288 219 980 536 h01 1;
+#X obj 172 295 osc~;
+#X msg 380 125 1;
+#X obj 33 202 *;
 #X obj 350 174 expr 1/$f1;
 #X floatatom 353 216 5 0 0 0 - - -;
 #X obj 345 411 *~;
@@ -37,8 +37,8 @@
 #X connect 11 0 12 0;
 #X connect 12 0 2 0;
 #X restore 511 234 pd ADSR;
-#X obj 13 11 r freq;
-#X obj 367 16 r trigger;
+#X obj 7 31 r freq;
+#X obj 385 13 r trigger;
 #X obj 481 17 r a;
 #X obj 515 18 r d;
 #X obj 548 18 r s;
@@ -47,30 +47,39 @@
 #X obj 616 16 r env_offset;
 #X obj 746 17 r velocity;
 #X obj 336 460 throw~ harmonics_out;
-#X obj 370 69 t b b b;
+#X obj 384 34 t b b b;
 #X obj 476 182 +;
 #X obj 508 182 +;
 #X obj 575 184 +;
-#X obj 592 67 random;
-#X obj 105 96 osc~;
-#X obj 133 151 *~;
-#X obj 92 203 +~;
-#X obj 94 11 r fm_freq;
-#X obj 154 10 r fm_amt;
-#X obj 225 100 osc~;
-#X text 117 78 FM;
-#X obj 230 12 r am_freq;
-#X obj 292 12 r am_amt;
-#X obj 176 300 *~;
-#X text 236 83 AM;
+#X obj 590 90 random;
+#X obj 105 204 osc~;
+#X obj 158 239 *~;
+#X obj 133 271 +~;
+#X obj 51 4 r fm_freq;
+#X obj 112 4 r fm_amt;
+#X obj 266 102 osc~;
+#X text 114 189 FM;
+#X obj 258 11 r am_freq;
+#X obj 320 11 r am_amt;
+#X obj 222 345 *~;
+#X text 277 85 AM;
 #X text 304 337 ENV;
-#X text 179 286 AM;
+#X text 228 303 AM;
 #X text 338 387 amp = 1/n;
-#X text 94 183 FM;
-#X text 136 241 Harmonic;
-#X obj 224 127 *~ 0.5;
-#X obj 222 188 +~ 0.5;
-#X obj 224 157 *~ 0;
+#X text 138 254 FM;
+#X obj 265 129 *~ 0.5;
+#X obj 263 190 +~ 0.5;
+#X obj 265 159 *~ 0;
+#X text 344 108 harmonic number;
+#X text 174 277 harmonic;
+#X obj 168 6 r fm_offset;
+#X obj 142 53 random;
+#X obj 144 103 expr $f1-($f2/2);
+#X obj 100 160 +;
+#X obj 148 29 * 20;
+#X obj 143 77 / 20;
+#X floatatom 194 203 5 0 0 0 - - -;
+#X obj 55 114 t b;
 #X connect 0 0 31 0;
 #X connect 1 0 3 0;
 #X connect 1 0 2 1;
@@ -91,6 +100,7 @@
 #X connect 17 0 1 0;
 #X connect 17 1 6 4;
 #X connect 17 2 21 0;
+#X connect 17 2 43 0;
 #X connect 18 0 6 0;
 #X connect 19 0 6 1;
 #X connect 20 0 6 3;
@@ -100,15 +110,26 @@
 #X connect 22 0 23 0;
 #X connect 23 0 24 1;
 #X connect 24 0 0 0;
-#X connect 25 0 22 0;
+#X connect 25 0 45 1;
+#X connect 25 0 49 0;
 #X connect 26 0 23 1;
-#X connect 27 0 38 0;
+#X connect 27 0 37 0;
 #X connect 29 0 27 0;
-#X connect 30 0 40 1;
+#X connect 30 0 39 1;
 #X connect 31 0 13 0;
-#X connect 38 0 40 0;
-#X connect 39 0 31 1;
-#X connect 40 0 39 0;
+#X connect 37 0 39 0;
+#X connect 38 0 31 1;
+#X connect 39 0 38 0;
+#X connect 42 0 44 1;
+#X connect 42 0 46 0;
+#X connect 42 0 49 0;
+#X connect 43 0 47 0;
+#X connect 44 0 45 0;
+#X connect 45 0 22 0;
+#X connect 45 0 48 0;
+#X connect 46 0 43 1;
+#X connect 47 0 44 0;
+#X connect 49 0 45 0;
 #X restore 391 273 pd h01;
 #X obj 89 88 inlet trigger;
 #X obj 176 89 inlet a;
@@ -134,10 +155,12 @@ and all harmonic modules send their audio output to harmonics_out.
 #X obj 693 86 inlet fm_amt;
 #X obj 603 119 s fm_freq;
 #X obj 692 117 s fm_amt;
-#X obj 775 87 inlet am_freq;
-#X obj 775 119 s am_freq;
-#X obj 863 119 s am_amt;
-#X obj 865 87 inlet am_amt;
+#X obj 942 91 inlet am_freq;
+#X obj 942 123 s am_freq;
+#X obj 1030 123 s am_amt;
+#X obj 1032 91 inlet am_amt;
+#X obj 773 86 inlet fm_offset;
+#X obj 772 115 s fm_offset;
 #X connect 0 0 8 0;
 #X connect 3 0 9 0;
 #X connect 4 0 10 0;
@@ -151,7 +174,8 @@ and all harmonic modules send their audio output to harmonics_out.
 #X connect 21 0 23 0;
 #X connect 24 0 25 0;
 #X connect 27 0 26 0;
-#X restore 316 235 pd harmonics;
+#X connect 28 0 29 0;
+#X restore 304 216 pd harmonics;
 #N canvas 416 320 450 300 amp 0;
 #X obj 129 15 inlet~;
 #X obj 187 256 outlet~;
@@ -194,13 +218,13 @@ and all harmonic modules send their audio output to harmonics_out.
 #X connect 12 0 2 0;
 #X restore 412 300 pd ADSR;
 #X obj 561 -56 vsl 15 200 0 250 0 0 empty empty A 0 -9 0 10 -262144
--1 -1 400 1;
+-1 -1 3400 1;
 #X obj 593 -54 vsl 15 200 5 1000 0 0 empty empty D 0 -9 0 10 -262144
 -1 -1 5400 1;
 #X obj 628 -57 vsl 15 200 0 1 0 0 empty empty S 0 -9 0 10 -262144 -1
--1 15000 1;
+-1 16800 1;
 #X obj 657 -55 vsl 15 200 0 500 0 0 empty empty R 0 -9 0 10 -262144
--1 -1 2400 1;
+-1 -1 10200 1;
 #X floatatom 551 161 5 0 0 0 - - -;
 #X floatatom 587 160 5 0 0 0 - - -;
 #X floatatom 624 160 5 0 0 0 - - -;
@@ -208,7 +232,7 @@ and all harmonic modules send their audio output to harmonics_out.
 #X text 590 -89 amp envelope;
 #X obj 1114 -59 vsl 15 128 0 1 0 0 empty empty volume 0 -9 0 10 -262144
 -1 -1 9900 1;
-#X obj 700 -60 vsl 15 200 1 100 0 0 empty empty env_offset 0 -9 0 10
+#X obj 697 -52 vsl 15 200 1 100 0 0 empty empty env_offset 0 -9 0 10
 -262144 -1 -1 0 1;
 #X floatatom 700 159 5 0 0 0 - - -;
 #X obj 361 -12 notein;
@@ -217,20 +241,23 @@ and all harmonic modules send their audio output to harmonics_out.
 #X obj 316 145 t f b;
 #X text 18 89 #TODO: implement random offset in sustain of harmonic
 envelope;
-#X obj 799 -60 vsl 15 200 0 20 0 0 empty empty FM_Freq 0 -9 0 10 -262144
+#X obj 790 -60 vsl 15 200 0 20 0 0 empty empty FM_Freq 0 -9 0 10 -262144
 -1 -1 0 1;
-#X obj 849 -59 vsl 15 200 0 10 0 0 empty empty FM_Amt 0 -9 0 10 -262144
+#X obj 840 -59 vsl 15 200 0 10 0 0 empty empty FM_Amt 0 -9 0 10 -262144
 -1 -1 0 1;
-#X floatatom 800 157 5 0 0 0 - - -;
-#X floatatom 845 160 5 0 0 0 - - -;
-#X obj 932 -59 vsl 15 200 0 20 0 0 empty empty AM_Freq 0 -9 0 10 -262144
--1 -1 4100 1;
-#X obj 991 -55 vsl 15 200 0 1 0 0 empty empty AM_Amt 0 -9 0 10 -262144
--1 -1 11300 1;
-#X floatatom 932 158 5 0 0 0 - - -;
-#X floatatom 988 162 5 0 0 0 - - -;
-#X text 32 26 #TODO: Vibrato needs random offset Tremolo needs amount
-Implement harmonic panning;
+#X floatatom 791 158 5 0 0 0 - - -;
+#X floatatom 836 161 5 0 0 0 - - -;
+#X obj 1004 -59 vsl 15 200 0 20 0 0 empty empty AM_Freq 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 1063 -55 vsl 15 200 0 1 0 0 empty empty AM_Amt 0 -9 0 10 -262144
+-1 -1 0 1;
+#X floatatom 1007 160 5 0 0 0 - - -;
+#X floatatom 1063 164 5 0 0 0 - - -;
+#X text 72 43 Imlement harmonic panning;
+#X obj 883 -56 vsl 15 200 0 20 0 0 empty empty FM_Offset 0 -9 0 10
+-262144 -1 -1 0 1;
+#X floatatom 881 159 5 0 0 0 - - -;
+#X text 32 26 #TODO: tremolo needs random offset.;
 #X connect 1 0 2 0;
 #X connect 2 0 0 0;
 #X connect 2 0 0 1;
@@ -265,5 +292,7 @@ Implement harmonic panning;
 #X connect 24 0 1 9;
 #X connect 25 0 27 0;
 #X connect 26 0 28 0;
-#X connect 27 0 1 10;
-#X connect 28 0 1 11;
+#X connect 27 0 1 11;
+#X connect 28 0 1 12;
+#X connect 30 0 31 0;
+#X connect 31 0 1 10;
