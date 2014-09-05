@@ -1,14 +1,14 @@
-#N canvas 539 76 625 596 10;
+#N canvas 495 82 625 596 10;
 #X floatatom 224 308 5 0 0 0 - - -;
 #X obj 224 265 line;
 #X obj 239 506 dac~;
 #X obj 342 -9 bng 15 150 50 0 empty empty start/stop -21 -7 0 10 -4034
 -1 -1;
 #X obj 576 -7 vsl 15 128 0 0.8 0 0 empty empty volume 0 -9 0 10 -262144
--1 -1 5200 1;
+-1 -1 9500 1;
 #X obj 239 460 *~;
 #X msg 78 185 set 0;
-#X obj 84 108 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 84 108 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X floatatom 39 153 5 0 0 0 - - -;
 #X obj 79 152 sel 0;
@@ -24,8 +24,8 @@
 #X floatatom 483 -8 5 0 0 2 carrier_freq - -;
 #X obj 218 390 +~;
 #X msg 221 218 \$1 \, \$2 \$3;
-#X msg 152 21 0 200 120000;
-#X text 137 -17 from - to - time (edit in edit mode);
+#X msg 135 18 0 200 120000;
+#X text 60 -10 from - to - time (edit in edit mode);
 #X connect 0 0 16 0;
 #X connect 1 0 0 0;
 #X connect 3 0 7 0;
