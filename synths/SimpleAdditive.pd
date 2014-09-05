@@ -1,15 +1,15 @@
-#N canvas 28 47 1170 504 10;
+#N canvas 22 85 1170 504 10;
 #X obj 334 372 dac~;
 #N canvas 135 88 1121 654 harmonics 0;
 #X obj 20 89 inlet freq;
 #X obj 416 483 outlet~;
-#N canvas 239 187 862 502 h01 1;
-#X obj 84 257 osc~;
+#N canvas 212 151 862 502 h01 1;
+#X obj 128 258 osc~;
 #X msg 352 105 1;
 #X obj 71 158 *;
 #X obj 350 174 expr 1/$f1;
 #X floatatom 353 216 5 0 0 0 - - -;
-#X obj 166 303 *~;
+#X obj 345 411 *~;
 #N canvas 381 249 458 495 ADSR 0;
 #X obj 77 142 pack f f f f;
 #X msg 78 172 1 \$2 \, \$4 \$3 \$2;
@@ -36,17 +36,17 @@
 #X connect 10 0 11 0;
 #X connect 11 0 12 0;
 #X connect 12 0 2 0;
-#X restore 516 285 pd ADSR;
+#X restore 511 234 pd ADSR;
 #X obj 13 11 r freq;
 #X obj 367 16 r trigger;
 #X obj 481 17 r a;
 #X obj 515 18 r d;
 #X obj 548 18 r s;
 #X obj 587 16 r r;
-#X obj 309 387 *~;
+#X obj 304 355 *~;
 #X obj 616 16 r env_offset;
 #X obj 746 17 r velocity;
-#X obj 300 461 throw~ harmonics_out;
+#X obj 336 460 throw~ harmonics_out;
 #X obj 370 69 t b b b;
 #X obj 476 182 +;
 #X obj 508 182 +;
@@ -61,23 +61,23 @@
 #X text 117 78 FM;
 #X obj 230 12 r am_freq;
 #X obj 292 12 r am_amt;
-#X obj 230 354 *~;
+#X obj 176 300 *~;
 #X text 236 83 AM;
-#X text 309 369 ENV;
-#X text 229 335 AM;
-#X text 150 281 amp = 1/n;
+#X text 304 337 ENV;
+#X text 179 286 AM;
+#X text 338 387 amp = 1/n;
 #X text 94 183 FM;
-#X text 92 240 Harmonic;
-#X obj 225 124 +~ 1;
-#X obj 225 153 *~ 0.5;
-#X obj 225 211 *~;
-#X connect 0 0 5 0;
-#X connect 1 0 2 1;
+#X text 136 241 Harmonic;
+#X obj 224 127 *~ 0.5;
+#X obj 222 188 +~ 0.5;
+#X obj 224 157 *~ 0;
+#X connect 0 0 31 0;
 #X connect 1 0 3 0;
+#X connect 1 0 2 1;
 #X connect 2 0 24 0;
 #X connect 3 0 4 0;
 #X connect 4 0 5 1;
-#X connect 5 0 31 0;
+#X connect 5 0 16 0;
 #X connect 6 0 13 1;
 #X connect 7 0 2 0;
 #X connect 8 0 17 0;
@@ -85,7 +85,7 @@
 #X connect 10 0 19 1;
 #X connect 11 0 6 2;
 #X connect 12 0 20 1;
-#X connect 13 0 16 0;
+#X connect 13 0 5 0;
 #X connect 14 0 21 1;
 #X connect 15 0 6 5;
 #X connect 17 0 1 0;
@@ -106,9 +106,9 @@
 #X connect 29 0 27 0;
 #X connect 30 0 40 1;
 #X connect 31 0 13 0;
-#X connect 38 0 39 0;
-#X connect 39 0 40 0;
-#X connect 40 0 31 1;
+#X connect 38 0 40 0;
+#X connect 39 0 31 1;
+#X connect 40 0 39 0;
 #X restore 391 273 pd h01;
 #X obj 89 88 inlet trigger;
 #X obj 176 89 inlet a;
@@ -194,20 +194,20 @@ and all harmonic modules send their audio output to harmonics_out.
 #X connect 12 0 2 0;
 #X restore 412 300 pd ADSR;
 #X obj 561 -56 vsl 15 200 0 250 0 0 empty empty A 0 -9 0 10 -262144
--1 -1 300 1;
+-1 -1 400 1;
 #X obj 593 -54 vsl 15 200 5 1000 0 0 empty empty D 0 -9 0 10 -262144
--1 -1 17000 1;
+-1 -1 5400 1;
 #X obj 628 -57 vsl 15 200 0 1 0 0 empty empty S 0 -9 0 10 -262144 -1
--1 10600 1;
+-1 15000 1;
 #X obj 657 -55 vsl 15 200 0 500 0 0 empty empty R 0 -9 0 10 -262144
--1 -1 3900 1;
+-1 -1 2400 1;
 #X floatatom 551 161 5 0 0 0 - - -;
 #X floatatom 587 160 5 0 0 0 - - -;
 #X floatatom 624 160 5 0 0 0 - - -;
 #X floatatom 661 160 5 0 0 0 - - -;
 #X text 590 -89 amp envelope;
 #X obj 1114 -59 vsl 15 128 0 1 0 0 empty empty volume 0 -9 0 10 -262144
--1 -1 10700 1;
+-1 -1 9900 1;
 #X obj 700 -60 vsl 15 200 1 100 0 0 empty empty env_offset 0 -9 0 10
 -262144 -1 -1 0 1;
 #X floatatom 700 159 5 0 0 0 - - -;
@@ -224,9 +224,9 @@ envelope;
 #X floatatom 800 157 5 0 0 0 - - -;
 #X floatatom 845 160 5 0 0 0 - - -;
 #X obj 932 -59 vsl 15 200 0 20 0 0 empty empty AM_Freq 0 -9 0 10 -262144
--1 -1 800 1;
+-1 -1 4100 1;
 #X obj 991 -55 vsl 15 200 0 1 0 0 empty empty AM_Amt 0 -9 0 10 -262144
--1 -1 19900 1;
+-1 -1 11300 1;
 #X floatatom 932 158 5 0 0 0 - - -;
 #X floatatom 988 162 5 0 0 0 - - -;
 #X text 32 26 #TODO: Vibrato needs random offset Tremolo needs amount
