@@ -1,9 +1,9 @@
-#N canvas 103 83 1170 504 10;
+#N canvas 57 22 1170 504 10;
 #X obj 466 365 dac~;
-#N canvas 135 88 1121 654 harmonics 1;
+#N canvas 135 88 1121 654 harmonics 0;
 #X obj 179 95 inlet freq;
 #X obj 416 483 outlet~;
-#N canvas 253 108 862 502 h01 0;
+#N canvas 316 104 862 502 h01 1;
 #X obj 181 219 osc~;
 #X msg 205 86 1;
 #X obj 182 154 *;
@@ -46,7 +46,6 @@
 #X obj 450 13 r r;
 #X obj 235 294 *~;
 #X obj 529 11 r env_offset;
-#X obj 499 39 random;
 #X obj 385 176 *;
 #X obj 412 177 *;
 #X obj 441 176 *;
@@ -61,6 +60,8 @@
 #X text 122 408 TODO: mejora implementacion del env offset;
 #X obj 627 10 r velocity;
 #X obj 266 378 throw~ harmonics_out;
+#X obj 499 39 random;
+#X obj 210 49 t b b;
 #X connect 0 0 6 0;
 #X connect 1 0 2 1;
 #X connect 1 0 4 0;
@@ -71,29 +72,30 @@
 #X connect 6 0 14 0;
 #X connect 7 0 14 1;
 #X connect 8 0 2 0;
-#X connect 9 0 1 0;
-#X connect 9 0 7 4;
-#X connect 9 0 16 0;
-#X connect 10 0 17 1;
-#X connect 11 0 18 1;
-#X connect 12 0 19 1;
-#X connect 13 0 20 1;
-#X connect 14 0 29 0;
-#X connect 15 0 16 1;
+#X connect 9 0 29 0;
+#X connect 9 0 30 0;
+#X connect 10 0 16 1;
+#X connect 11 0 17 1;
+#X connect 12 0 18 1;
+#X connect 13 0 19 1;
+#X connect 14 0 28 0;
+#X connect 15 0 29 1;
 #X connect 16 0 21 0;
+#X connect 16 0 7 0;
 #X connect 17 0 22 0;
-#X connect 17 0 7 0;
+#X connect 17 0 7 1;
 #X connect 18 0 23 0;
-#X connect 18 0 7 1;
+#X connect 18 0 7 2;
+#X connect 19 0 7 3;
 #X connect 19 0 24 0;
-#X connect 19 0 7 2;
-#X connect 20 0 7 3;
-#X connect 20 0 25 0;
-#X connect 21 0 17 0;
-#X connect 21 0 18 0;
-#X connect 21 0 19 0;
-#X connect 21 0 20 0;
-#X connect 28 0 7 5;
+#X connect 20 0 16 0;
+#X connect 20 0 17 0;
+#X connect 20 0 18 0;
+#X connect 20 0 19 0;
+#X connect 27 0 7 5;
+#X connect 29 0 20 0;
+#X connect 30 0 1 0;
+#X connect 30 1 7 4;
 #X restore 391 273 pd h01;
 #X obj 331 97 inlet trigger;
 #X obj 634 93 inlet a;
@@ -138,7 +140,7 @@ and all harmonic modules send their audio output to harmonics_out.
 #X connect 4 0 5 1;
 #X connect 5 0 2 0;
 #X restore 463 313 pd amp;
-#N canvas 606 206 458 495 ADSR 0;
+#N canvas 456 206 458 495 ADSR 0;
 #X obj 77 142 pack f f f f;
 #X msg 78 172 1 \$2 \, \$4 \$3 \$2;
 #X obj 129 211 vline~;
@@ -167,24 +169,24 @@ and all harmonic modules send their audio output to harmonics_out.
 #X connect 12 0 2 0;
 #X restore 544 293 pd ADSR;
 #X obj 825 -2 vsl 15 128 0 250 0 0 empty empty A 0 -9 0 10 -262144
--1 -1 2700 1;
+-1 -1 900 1;
 #X obj 862 -3 vsl 15 128 5 1000 0 0 empty empty D 0 -9 0 10 -262144
--1 -1 3900 1;
+-1 -1 800 1;
 #X obj 897 -6 vsl 15 128 0 1 0 0 empty empty S 0 -9 0 10 -262144 -1
--1 4100 1;
+-1 12200 1;
 #X obj 926 -4 vsl 15 128 0 500 0 0 empty empty R 0 -9 0 10 -262144
--1 -1 5900 1;
+-1 -1 2400 1;
 #X floatatom 818 146 5 0 0 0 - - -;
 #X floatatom 854 145 5 0 0 0 - - -;
 #X floatatom 891 145 5 0 0 0 - - -;
 #X floatatom 928 145 5 0 0 0 - - -;
 #X text 859 -38 amp envelope;
 #X obj 749 -3 vsl 15 128 0 1 0 0 empty empty volume 0 -9 0 10 -262144
--1 -1 3800 1;
-#X obj 988 -4 vsl 15 128 1 2000 0 0 empty empty env_offset 0 -9 0 10
--262144 -1 -1 2500 1;
+-1 -1 10100 1;
+#X obj 988 -4 vsl 15 128 1 100 0 0 empty empty env_offset 0 -9 0 10
+-262144 -1 -1 300 1;
 #X floatatom 987 144 5 0 0 0 - - -;
-#X text 969 171 BUG: en offset 1 el env del harmonico se va a 0 en
+#X text 750 251 BUG: en offset 1 el env del harmonico se va a 0 en
 todos los stages \, en lugar de eso tiene que ser idéntico al amp
 envelopope general;
 #X text 74 29 #TODO: harmonic tremolo and vibrato and pan;
