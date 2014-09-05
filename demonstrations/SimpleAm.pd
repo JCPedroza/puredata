@@ -1,0 +1,28 @@
+#N canvas 522 343 754 330 10;
+#X obj 52 106 osc~;
+#X obj 52 136 *~ 0.5;
+#X obj 119 262 dac~;
+#X floatatom 52 76 5 0 0 0 - - -;
+#X obj 141 89 osc~;
+#X obj 141 113 +~ 1;
+#X obj 141 139 *~ 0.5;
+#X text 133 28 amplitude modulator;
+#X floatatom 142 63 5 0 0 0 - - -;
+#X text 45 54 carrier;
+#X text 178 109 limit amplitude to be between 0 and 1 instead of 1
+and -1;
+#X obj 273 181 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 12700 1;
+#X text 271 161 AM amount range 0 to 1;
+#X obj 142 168 *~ 1;
+#X obj 101 188 *~;
+#X connect 0 0 1 0;
+#X connect 1 0 14 0;
+#X connect 3 0 0 0;
+#X connect 4 0 5 0;
+#X connect 5 0 6 0;
+#X connect 6 0 13 0;
+#X connect 8 0 4 0;
+#X connect 11 0 13 1;
+#X connect 13 0 14 1;
+#X connect 14 0 2 0;
