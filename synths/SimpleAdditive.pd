@@ -1,8 +1,8 @@
-#N canvas 68 135 1170 504 10;
+#N canvas 88 126 1170 504 10;
 #X obj 334 372 dac~;
-#N canvas -26 93 1121 654 harmonics 1;
+#N canvas 0 93 1121 654 harmonics 0;
 #X obj 20 89 inlet freq;
-#N canvas 166 205 980 536 h01 1;
+#N canvas 166 205 980 536 h01 0;
 #X obj 172 295 osc~;
 #X obj 33 202 *;
 #X obj 350 174 expr 1/$f1;
@@ -79,7 +79,7 @@
 #X obj 428 447 *~;
 #X obj 324 445 *~;
 #X obj 561 332 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 6350 1;
+-1 -1 0 1;
 #X obj 450 365 expr 1 - $f1;
 #X text 360 461 panning;
 #X obj 794 17 r pan_amt;
@@ -123,6 +123,7 @@ to the right;
 #X connect 3 0 1 0;
 #X restore 310 65 pd smoother;
 #X obj 265 159 *~;
+#X text 39 39 comment;
 #X connect 0 0 28 0;
 #X connect 1 0 21 0;
 #X connect 2 0 60 0;
@@ -306,20 +307,20 @@ and all harmonic modules send their audio output to harmonics_out.
 #X connect 12 0 2 0;
 #X restore 412 300 pd ADSR;
 #X obj 493 -35 vsl 15 200 0 250 0 0 empty empty A 0 -9 0 10 -262144
--1 -1 3800 1;
+-1 -1 0 1;
 #X obj 525 -33 vsl 15 200 5 1000 0 0 empty empty D 0 -9 0 10 -262144
--1 -1 7200 1;
+-1 -1 0 1;
 #X obj 560 -36 vsl 15 200 0 1 0 0 empty empty S 0 -9 0 10 -262144 -1
--1 13600 1;
+-1 0 1;
 #X obj 589 -34 vsl 15 200 0 500 0 0 empty empty R 0 -9 0 10 -262144
--1 -1 19200 1;
+-1 -1 0 1;
 #X floatatom 483 182 5 0 0 0 - - -;
 #X floatatom 519 181 5 0 0 0 - - -;
 #X floatatom 556 181 5 0 0 0 - - -;
 #X floatatom 593 181 5 0 0 0 - - -;
 #X text 522 -68 amp envelope;
 #X obj 1093 -29 vsl 15 128 0 1 0 0 empty empty volume 0 -9 0 10 -262144
--1 -1 10700 1;
+-1 -1 0 1;
 #X obj 629 -31 vsl 15 200 1 100 0 0 empty empty env_offset 0 -9 0 10
 -262144 -1 -1 0 1;
 #X floatatom 632 180 5 0 0 0 - - -;
@@ -336,7 +337,7 @@ envelope;
 #X floatatom 712 178 5 0 0 0 - - -;
 #X floatatom 757 181 5 0 0 0 - - -;
 #X obj 880 -41 vsl 15 200 0 20 0 0 empty empty AM_Freq 0 -9 0 10 -262144
--1 -1 16400 1;
+-1 -1 0 1;
 #X obj 938 -39 vsl 15 200 0 1 0 0 empty empty AM_Amt 0 -9 0 10 -262144
 -1 -1 0 1;
 #X floatatom 883 178 5 0 0 0 - - -;
@@ -348,6 +349,30 @@ envelope;
 #X obj 1007 -41 vsl 15 200 0.5 1 0 0 empty empty stereo_width 0 -9
 0 10 -262144 -1 -1 0 1;
 #X floatatom 1005 183 5 0 0 0 - - -;
+#X text 75 41 pan needs random offset;
+#N canvas 376 313 450 300 cpu_usage 0;
+#X obj 149 161 cputime;
+#X obj 149 21 loadbang;
+#X obj 149 105 metro 1000;
+#X msg 149 49 1;
+#X floatatom 149 77 0 0 0 0 - - -;
+#X obj 149 133 t b b;
+#X obj 149 221 * 0.1;
+#X obj 149 190 int;
+#X text 194 77 <-- on/off;
+#X text 82 277 CPU load in percent;
+#X obj 148 248 outlet;
+#X connect 0 0 7 0;
+#X connect 1 0 3 0;
+#X connect 2 0 5 0;
+#X connect 3 0 4 0;
+#X connect 4 0 2 0;
+#X connect 5 0 0 0;
+#X connect 5 1 0 1;
+#X connect 6 0 10 0;
+#X connect 7 0 6 0;
+#X restore 79 -38 pd cpu_usage;
+#X floatatom 78 -6 5 0 0 0 - - -;
 #X connect 1 0 2 0;
 #X connect 1 1 2 1;
 #X connect 2 0 0 0;
@@ -389,3 +414,4 @@ envelope;
 #X connect 30 0 1 10;
 #X connect 32 0 33 0;
 #X connect 33 0 1 13;
+#X connect 35 0 36 0;
