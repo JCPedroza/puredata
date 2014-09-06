@@ -1,8 +1,8 @@
-#N canvas 121 22 1170 504 10;
+#N canvas 79 82 1170 504 10;
 #X obj 334 372 dac~;
-#N canvas 110 81 1121 654 harmonics 0;
+#N canvas 60 387 1121 654 harmonics 0;
 #X obj 20 89 inlet freq;
-#N canvas 111 68 980 536 h01 1;
+#N canvas 58 111 980 536 h01 1;
 #X obj 172 295 osc~;
 #X obj 33 202 *;
 #X obj 350 174 expr 1/$f1;
@@ -119,8 +119,8 @@ to the right;
 #X connect 3 0 1 0;
 #X restore 310 65 pd smoother;
 #X obj 265 159 *~;
-#X floatatom 382 126 5 0 0 0 - - -;
 #X text 365 95 set harmonic number here;
+#X msg 383 115 1;
 #X connect 0 0 28 0;
 #X connect 1 0 21 0;
 #X connect 2 0 3 1;
@@ -136,7 +136,7 @@ to the right;
 #X connect 11 0 3 0;
 #X connect 12 0 18 1;
 #X connect 13 0 4 5;
-#X connect 14 0 64 0;
+#X connect 14 0 65 0;
 #X connect 14 1 4 4;
 #X connect 14 2 18 0;
 #X connect 14 2 37 0;
@@ -185,9 +185,9 @@ to the right;
 #X connect 61 0 63 0;
 #X connect 62 0 63 1;
 #X connect 63 0 34 0;
-#X connect 64 0 51 0;
-#X connect 64 0 2 0;
-#X connect 64 0 1 1;
+#X connect 65 0 2 0;
+#X connect 65 0 51 0;
+#X connect 65 0 1 1;
 #X restore 410 274 pd h01;
 #X obj 89 88 inlet trigger;
 #X obj 176 89 inlet a;
@@ -302,20 +302,20 @@ and all harmonic modules send their audio output to harmonics_out.
 #X connect 12 0 2 0;
 #X restore 412 300 pd ADSR;
 #X obj 493 -35 vsl 15 200 0 250 0 0 empty empty A 0 -9 0 10 -262144
--1 -1 700 1;
+-1 -1 1800 1;
 #X obj 525 -33 vsl 15 200 5 1000 0 0 empty empty D 0 -9 0 10 -262144
--1 -1 12000 1;
+-1 -1 8100 1;
 #X obj 560 -36 vsl 15 200 0 1 0 0 empty empty S 0 -9 0 10 -262144 -1
--1 13000 1;
-#X obj 589 -34 vsl 15 200 0 500 0 0 empty empty R 0 -9 0 10 -262144
--1 -1 3500 1;
+-1 3700 1;
+#X obj 593 -33 vsl 15 200 0 500 0 0 empty empty R 0 -9 0 10 -262144
+-1 -1 1700 1;
 #X floatatom 483 182 5 0 0 0 - - -;
 #X floatatom 519 181 5 0 0 0 - - -;
 #X floatatom 556 181 5 0 0 0 - - -;
 #X floatatom 593 181 5 0 0 0 - - -;
 #X text 522 -68 amp envelope;
 #X obj 1093 -29 vsl 15 128 0 1 0 0 empty empty volume 0 -9 0 10 -262144
--1 -1 4000 1;
+-1 -1 9600 1;
 #X obj 629 -31 vsl 15 200 1 100 0 0 empty empty env_offset 0 -9 0 10
 -262144 -1 -1 0 1;
 #X floatatom 632 180 5 0 0 0 - - -;
@@ -326,15 +326,15 @@ and all harmonic modules send their audio output to harmonics_out.
 #X text 18 89 #TODO: implement random offset in sustain of harmonic
 envelope;
 #X obj 711 -40 vsl 15 200 0 20 0 0 empty empty FM_Freq 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 1300 1;
 #X obj 761 -39 vsl 15 200 0 10 0 0 empty empty FM_Amt 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 1700 1;
 #X floatatom 712 178 5 0 0 0 - - -;
 #X floatatom 757 181 5 0 0 0 - - -;
 #X obj 880 -41 vsl 15 200 0 20 0 0 empty empty AM_Freq 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 1900 1;
 #X obj 938 -39 vsl 15 200 0 1 0 0 empty empty AM_Amt 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 2000 1;
 #X floatatom 883 178 5 0 0 0 - - -;
 #X floatatom 939 182 5 0 0 0 - - -;
 #X obj 804 -36 vsl 15 200 0 20 0 0 empty empty FM_Offset 0 -9 0 10
