@@ -1,0 +1,10 @@
+#N canvas 229 115 450 300 10;
+#N canvas 763 354 450 300 smoother 0;
+#X obj 194 81 inlet;
+#X obj 197 165 outlet~;
+#X obj 196 110 pack 0 50;
+#X obj 196 137 line~;
+#X connect 0 0 2 0;
+#X connect 2 0 3 0;
+#X connect 3 0 1 0;
+#X restore 180 138 pd smoother;
