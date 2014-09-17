@@ -1,5 +1,5 @@
-#N canvas 647 55 450 300 10;
-#N canvas -89 336 450 300 WaveDelay 1;
+#N canvas 550 73 450 300 10;
+#N canvas 670 409 450 300 WaveDelay 1;
 #X obj 170 23 adc~;
 #X obj 156 270 dac~;
 #N canvas 77 45 450 300 atom0 1;
@@ -7,7 +7,7 @@
 #X obj 236 34 r~ adc;
 #X obj 331 83 r feedback;
 #X obj 311 108 *~ 0;
-#N canvas 467 380 450 300 time 0;
+#N canvas 80 387 560 324 time 1;
 #X obj 67 33 r delay_time;
 #X obj 158 32 r delay_offset;
 #X obj 190 116 *;
@@ -16,6 +16,7 @@
 #X obj 170 234 outlet time;
 #X obj 137 79 t b b;
 #X msg 223 79 0;
+#X obj 343 145 expr $f1+($f2*$f3);
 #X connect 0 0 3 0;
 #X connect 1 0 2 0;
 #X connect 1 0 6 0;
@@ -37,7 +38,7 @@
 #X restore 38 81 pd atom0;
 #X obj 170 45 s~ adc;
 #X obj 159 236 catch~ dly_out;
-#N canvas 83 204 450 300 atom0 1;
+#N canvas 83 204 450 300 atom0 0;
 #X obj 196 215 throw~ dly_out;
 #X obj 236 34 r~ adc;
 #X obj 331 83 r feedback;
@@ -70,7 +71,7 @@
 #X connect 6 0 0 0;
 #X connect 6 0 3 0;
 #X restore 96 80 pd atom0;
-#N canvas 128 492 450 300 atom0 1;
+#N canvas 128 492 450 300 atom0 0;
 #X obj 196 215 throw~ dly_out;
 #X obj 236 34 r~ adc;
 #X obj 331 83 r feedback;
@@ -134,7 +135,7 @@
 #X floatatom 54 87 5 0 0 0 - - -;
 #X obj 240 128 s feedback;
 #X obj 242 79 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 12700 1;
+-1 -1 0 1;
 #X floatatom 239 104 5 0 1 0 - - -;
 #X floatatom 138 86 5 0 0 0 - - -;
 #X obj 138 110 s delay_offset;
