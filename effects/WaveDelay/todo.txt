@@ -1,3 +1,8 @@
+- Implement atoms as abstractions instead of subpatches, and use the 
+  creation argument (dollar sign) to assign an atom number, see:
+  http://en.flossmanuals.net/pure-data/ch043_dollar-signs/
+  http://en.flossmanuals.net/pure-data/ch042_abstractions/ 
+
 - Add more non-linear time offset modes.
 
 - Maybe change/improve pendulum mode? Is the length variable well 
