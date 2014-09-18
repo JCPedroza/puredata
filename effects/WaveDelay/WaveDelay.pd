@@ -1,9 +1,8 @@
 #N canvas 478 22 550 300 10;
-#N canvas 65 466 450 300 WaveDelay 1;
+#N canvas 176 401 450 300 WaveDelay 1;
 #X obj 208 10 adc~;
 #X obj 184 275 dac~;
 #X obj 208 32 s~ adc;
-#X obj 188 241 catch~ dly_out;
 #X floatatom 372 175 5 0 0 0 - - -;
 #X obj 362 145 atom 15;
 #X obj 35 73 atom 0;
@@ -36,10 +35,66 @@
 #X obj 221 145 atom 12;
 #X obj 266 146 atom 13;
 #X obj 311 146 atom 14;
+#N canvas 648 412 450 300 amp 1;
+#X obj 222 27 catch~ dly_out;
+#X obj 137 272 outlet~ L;
+#X obj 216 273 outlet~ R;
+#X obj 323 28 r wet;
+#N canvas 763 354 450 300 smoother 0;
+#X obj 194 81 inlet;
+#X obj 197 165 outlet~;
+#X obj 196 110 pack 0 50;
+#X obj 196 137 line~;
 #X connect 0 0 2 0;
+#X connect 2 0 3 0;
 #X connect 3 0 1 0;
-#X connect 3 0 1 1;
-#X connect 5 0 4 0;
+#X restore 324 55 pd smoother;
+#X obj 283 86 *~;
+#X obj 188 142 +~;
+#X obj 70 22 r~ adc;
+#X obj 126 24 r dry;
+#N canvas 763 354 450 300 smoother 0;
+#X obj 194 81 inlet;
+#X obj 197 165 outlet~;
+#X obj 196 110 pack 0 50;
+#X obj 196 137 line~;
+#X connect 0 0 2 0;
+#X connect 2 0 3 0;
+#X connect 3 0 1 0;
+#X restore 127 52 pd smoother;
+#X obj 95 82 *~;
+#X obj 346 96 r volume;
+#N canvas 763 354 450 300 smoother 0;
+#X obj 194 81 inlet;
+#X obj 197 165 outlet~;
+#X obj 196 110 pack 0 50;
+#X obj 196 137 line~;
+#X connect 0 0 2 0;
+#X connect 2 0 3 0;
+#X connect 3 0 1 0;
+#X restore 345 124 pd smoother;
+#X obj 200 193 *~;
+#X floatatom 301 126 5 0 0 0 - - -;
+#X connect 0 0 5 0;
+#X connect 3 0 4 0;
+#X connect 3 0 14 0;
+#X connect 4 0 5 1;
+#X connect 5 0 6 1;
+#X connect 6 0 13 0;
+#X connect 7 0 10 0;
+#X connect 8 0 9 0;
+#X connect 8 0 14 0;
+#X connect 9 0 10 1;
+#X connect 10 0 6 0;
+#X connect 11 0 12 0;
+#X connect 11 0 14 0;
+#X connect 12 0 13 1;
+#X connect 13 0 1 0;
+#X connect 13 0 2 0;
+#X restore 179 248 pd amp;
+#X connect 0 0 2 0;
+#X connect 4 0 3 0;
+#X connect 5 0 13 0;
 #X connect 6 0 14 0;
 #X connect 7 0 15 0;
 #X connect 8 0 16 0;
@@ -47,14 +102,15 @@
 #X connect 10 0 18 0;
 #X connect 11 0 19 0;
 #X connect 12 0 20 0;
-#X connect 13 0 21 0;
+#X connect 28 0 21 0;
 #X connect 29 0 22 0;
 #X connect 30 0 23 0;
 #X connect 31 0 24 0;
 #X connect 32 0 25 0;
 #X connect 33 0 26 0;
 #X connect 34 0 27 0;
-#X connect 35 0 28 0;
+#X connect 35 0 1 0;
+#X connect 35 1 1 1;
 #X restore 6 276 pd WaveDelay;
 #N canvas 376 313 450 300 cpu_usage 0;
 #X obj 149 161 cputime;
@@ -82,18 +138,27 @@
 #X obj -13 102 s delay_time;
 #X floatatom -13 79 5 0 0 0 - - -;
 #X obj 169 103 s feedback;
-#X obj 172 70 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 0 1;
+#X obj 172 81 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 12700 1;
 #X floatatom 71 78 5 0 0 0 - - -;
 #X obj 71 102 s delay_offset;
 #X obj -15 134 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X obj -14 156 s partial_amp;
-#X obj -14 186 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj -14 186 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj -13 209 s pendulum_time;
-#X obj 169 49 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 169 62 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
+#X obj 346 21 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 12700 1;
+#X obj 378 20 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 12700 1;
+#X obj 328 161 s dry;
+#X obj 377 162 s wet;
+#X obj 434 19 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 7500 1;
+#X obj 434 160 s volume;
 #X connect 1 0 2 0;
 #X connect 4 0 3 0;
 #X connect 6 0 5 0;
@@ -101,3 +166,6 @@
 #X connect 9 0 10 0;
 #X connect 11 0 12 0;
 #X connect 13 0 6 0;
+#X connect 14 0 16 0;
+#X connect 15 0 17 0;
+#X connect 18 0 19 0;
