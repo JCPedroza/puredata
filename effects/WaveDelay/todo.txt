@@ -1,0 +1,2 @@
+- Maybe change/improve pendulum mode? Is the length variable well 
+  implemented? Can the formula be implemented in a different way?
