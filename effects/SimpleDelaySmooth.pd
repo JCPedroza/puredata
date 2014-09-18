@@ -1,0 +1,29 @@
+#N canvas 201 278 450 300 10;
+#X obj 154 103 *~ 0;
+#X obj 93 53 delwrite~ the_delay0 5000;
+#X obj 91 234 dac~;
+#X obj 92 23 adc~;
+#X obj 298 48 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 12700 1;
+#X text 326 63 feedback;
+#X obj 271 90 hsl 128 15 0 600 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 3700 1;
+#X text 298 106 delay time;
+#X obj 95 160 vd~ the_delay0 1000;
+#N canvas 763 354 450 300 smoother 0;
+#X obj 194 81 inlet;
+#X obj 197 165 outlet~;
+#X obj 196 110 pack 0 50;
+#X obj 196 137 line~;
+#X connect 0 0 2 0;
+#X connect 2 0 3 0;
+#X connect 3 0 1 0;
+#X restore 212 123 pd smoother;
+#X connect 0 0 1 0;
+#X connect 3 0 1 0;
+#X connect 4 0 0 1;
+#X connect 6 0 9 0;
+#X connect 8 0 2 0;
+#X connect 8 0 2 1;
+#X connect 8 0 0 0;
+#X connect 9 0 8 0;
