@@ -1,2 +1,7 @@
+- Add more non-linear time offset modes.
+
 - Maybe change/improve pendulum mode? Is the length variable well 
   implemented? Can the formula be implemented in a different way?
+  (maybe in another version?)
+
+- Make an analogish/smooth mode or version. (maybe in another version?)
