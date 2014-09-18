@@ -1,5 +1,5 @@
-#N canvas 501 61 550 300 10;
-#N canvas 35 412 450 300 WaveDelay 1;
+#N canvas 523 57 550 300 10;
+#N canvas 38 468 450 300 WaveDelay 1;
 #X obj 208 10 adc~;
 #X obj 184 275 dac~;
 #X obj 208 32 s~ adc;
@@ -171,29 +171,32 @@
 #X floatatom -13 79 5 0 0 0 - - -;
 #X obj 169 103 s feedback;
 #X obj 172 81 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 12700 1;
+-1 -1 0 1;
 #X floatatom 71 78 5 0 0 0 - - -;
 #X obj 71 102 s delay_offset;
 #X obj 104 129 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 105 152 s pendulum_time;
-#X obj 169 62 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 169 62 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 346 21 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 378 20 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 8100 1;
+-1 -1 0 1;
 #X obj 328 161 s dry;
 #X obj 377 162 s wet;
 #X obj 434 19 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 9000 1;
+-1 -1 0 1;
 #X obj 434 160 s volume;
-#X obj -10 131 vradio 15 1 0 3 empty empty empty 0 -8 0 10 -262144
--1 -1 2;
-#X text 11 127 1:1;
-#X obj -10 189 s amp_curve;
-#X text 10 143 1/n;
-#X text 10 159 1/sqrt(n+1);
+#X obj -10 131 vradio 15 1 0 6 empty empty empty 0 -8 0 10 -262144
+-1 -1 5;
+#X text 8 130 1:1;
+#X obj -10 233 s amp_curve;
+#X text 8 175 1/n;
+#X text 8 159 1/sqrt(n);
+#X text 9 190 1/(n*2);
+#X text 8 205 1/n^2;
+#X text 8 145 1/cubert(n);
 #X connect 1 0 2 0;
 #X connect 4 0 3 0;
 #X connect 6 0 5 0;
