@@ -1,0 +1,9 @@
+#N canvas 527 404 450 300 10;
+#N canvas 408 332 450 300 nthFibonacci 0;
+#X obj 104 75 inlet;
+#X obj 105 188 outlet;
+#X obj 104 118 expr (pow(((1 + sqrt(5))/2) \, $f1) - pow(1 - ((1 +
+sqrt(5))/2) \, $f1)) / sqrt(5);
+#X connect 0 0 2 0;
+#X connect 2 0 1 0;
+#X restore 162 137 pd nthFibonacci;
