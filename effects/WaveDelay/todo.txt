@@ -1,7 +1,3 @@
-- atom on/off master fader, all atoms sound when totally open, and atoms 
-  start muting as it closes, starting from the largest ones (maybe another
-  fader to turn off starting from the smallest ones?) 
-
 - Maybe change/improve pendulum mode? Is the length variable well 
   implemented? Can the formula be implemented in a different way?
   (maybe in another version?)
