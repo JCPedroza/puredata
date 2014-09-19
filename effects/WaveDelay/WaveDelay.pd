@@ -221,14 +221,14 @@
 #X obj 346 21 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 378 20 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 7100 1;
+-1 -1 0 1;
 #X obj 328 161 s dry;
 #X obj 377 162 s wet;
 #X obj 434 19 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 7800 1;
+-1 -1 0 1;
 #X obj 434 160 s volume;
 #X obj -10 131 vradio 15 1 0 7 empty empty empty 0 -8 0 10 -262144
--1 -1 1;
+-1 -1 0;
 #X text 8 130 1:1;
 #X obj -10 242 s amp_curve;
 #X text 8 175 1/n;
@@ -247,7 +247,7 @@
 #X text 122 206 sin(t);
 #X text 121 220 fibonacci;
 #X obj 210 134 vsl 15 100 0 23 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 9900 1;
+-1 -1 2700 1;
 #X obj 210 264 s active_atoms;
 #X floatatom 210 243 5 0 0 0 - - -;
 #X connect 1 0 2 0;
