@@ -1,5 +1,5 @@
-#N canvas 367 22 550 300 10;
-#N canvas 0 253 450 300 WaveDelay 1;
+#N canvas 502 22 550 300 10;
+#N canvas 149 332 450 300 WaveDelay 1;
 #X obj 208 10 adc~;
 #X obj 184 275 dac~;
 #X obj 208 32 s~ adc;
@@ -108,6 +108,8 @@
 #X obj 238 180 atom 12;
 #X obj 283 181 atom 13;
 #X obj 328 181 atom 14;
+#X text 13 59 amp;
+#X text 6 101 time;
 #X connect 0 0 2 0;
 #X connect 19 0 1 0;
 #X connect 19 1 1 1;
@@ -171,24 +173,22 @@
 #X floatatom -13 79 5 0 0 0 - - -;
 #X obj 169 103 s feedback;
 #X obj 172 81 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 0 1;
+-1 -1 12700 1;
 #X floatatom 71 78 5 0 0 0 - - -;
 #X obj 71 102 s delay_offset;
-#X obj 104 129 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 169 62 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 169 62 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X obj 346 21 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 378 20 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 6100 1;
 #X obj 328 161 s dry;
 #X obj 377 162 s wet;
 #X obj 434 19 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 6600 1;
 #X obj 434 160 s volume;
 #X obj -10 131 vradio 15 1 0 7 empty empty empty 0 -8 0 10 -262144
--1 -1 0;
+-1 -1 2;
 #X text 8 130 1:1;
 #X obj -10 242 s amp_curve;
 #X text 8 175 1/n;
@@ -197,14 +197,22 @@
 #X text 8 205 1/n^2;
 #X text 8 145 1/cubert(n);
 #X text 7 221 sin(n);
-#X obj 105 152 s time_curve;
+#X obj 101 242 s time_curve;
+#X obj 102 145 vradio 15 1 0 6 empty empty empty 0 -8 0 10 -262144
+-1 -1 3;
+#X text 120 143 linear;
+#X text 121 159 pendulum;
+#X text 121 175 cubert(t);
+#X text 121 190 sqrt(t);
+#X text 122 206 sin(t);
+#X text 121 220 fibonacci;
 #X connect 1 0 2 0;
 #X connect 4 0 3 0;
 #X connect 6 0 5 0;
 #X connect 7 0 8 0;
-#X connect 9 0 26 0;
-#X connect 10 0 6 0;
+#X connect 9 0 6 0;
+#X connect 10 0 12 0;
 #X connect 11 0 13 0;
-#X connect 12 0 14 0;
-#X connect 15 0 16 0;
-#X connect 17 0 19 0;
+#X connect 14 0 15 0;
+#X connect 16 0 18 0;
+#X connect 26 0 25 0;
