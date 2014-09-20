@@ -1,7 +1,7 @@
 #N canvas 521 22 550 300 10;
-#N canvas 19 275 504 396 WaveDelay 1;
+#N canvas 19 275 504 396 WaveDelay 0;
 #X obj 208 10 adc~;
-#X obj 205 372 dac~;
+#X obj 194 348 dac~;
 #X obj 208 32 s~ adc;
 #X floatatom 237 124 7 0 0 0 - - -;
 #N canvas 509 410 450 300 amp 0;
@@ -60,7 +60,7 @@
 #X connect 12 0 13 1;
 #X connect 13 0 1 0;
 #X connect 13 0 2 0;
-#X restore 200 345 pd amp;
+#X restore 189 321 pd amp;
 #X text 19 100 amp;
 #X text 13 121 time;
 #X obj 42 83 atom 0;
@@ -149,6 +149,27 @@
 #X obj 283 243 atom 21;
 #X obj 330 243 atom 22;
 #X obj 378 243 atom 23;
+#N canvas 577 393 503 303 record 1;
+#X obj 146 168 writesf~;
+#X obj 58 17 inlet~;
+#X obj 139 17 inlet~;
+#X obj 204 19 r start_recording;
+#X obj 317 19 r stop_recording;
+#X obj 204 42 t b b;
+#X msg 197 78 start;
+#X msg 316 46 stop;
+#X obj 111 74 osc~ 440;
+#X msg 241 78 open -bytes 3 ./WaveDelaySound.wav;
+#X connect 1 0 0 0;
+#X connect 3 0 5 0;
+#X connect 4 0 7 0;
+#X connect 5 0 6 0;
+#X connect 5 1 9 0;
+#X connect 6 0 0 0;
+#X connect 7 0 0 0;
+#X connect 8 0 0 0;
+#X connect 9 0 0 0;
+#X restore 351 349 pd record;
 #X connect 0 0 2 0;
 #X connect 4 0 1 0;
 #X connect 4 1 1 1;
@@ -228,22 +249,22 @@
 #X floatatom -13 79 5 0 0 0 - - -;
 #X obj 169 103 s feedback;
 #X obj 172 81 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 12700 1;
+-1 -1 0 1;
 #X floatatom 71 78 5 0 0 0 - - -;
 #X obj 71 102 s delay_offset;
-#X obj 169 62 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 169 62 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 346 21 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+#X obj 329 20 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
-#X obj 378 20 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 6100 1;
-#X obj 328 161 s dry;
-#X obj 377 162 s wet;
-#X obj 434 19 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 6500 1;
-#X obj 434 160 s volume;
+#X obj 361 19 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 300 160 s dry;
+#X obj 349 161 s wet;
+#X obj 417 18 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 406 159 s volume;
 #X obj -10 131 vradio 15 1 0 7 empty empty empty 0 -8 0 10 -262144
--1 -1 3;
+-1 -1 0;
 #X text 8 130 1:1;
 #X obj -10 242 s amp_curve;
 #X text 8 175 1/n;
@@ -262,12 +283,18 @@
 #X text 122 206 sin(t);
 #X text 121 220 fibonacci;
 #X obj 210 134 vsl 15 100 1 24 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 9900 1;
+-1 -1 0 1;
 #X obj 210 264 s active_atoms;
 #X floatatom 210 243 5 0 0 0 - - -;
-#X obj 314 213 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 244 187 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 315 238 s analogish_mode;
+#X obj 245 212 s analogish_mode;
+#X obj 385 209 bng 15 250 50 0 empty empty empty 17 7 0 10 -4034 -1
+-1;
+#X obj 386 233 bng 15 250 50 0 empty empty empty 17 7 0 10 -258113
+-1 -1;
+#X obj 399 207 s start_recording;
+#X obj 403 232 s stop_recording;
 #X connect 1 0 2 0;
 #X connect 4 0 3 0;
 #X connect 6 0 5 0;
@@ -281,3 +308,5 @@
 #X connect 33 0 35 0;
 #X connect 35 0 34 0;
 #X connect 36 0 37 0;
+#X connect 38 0 40 0;
+#X connect 39 0 41 0;
