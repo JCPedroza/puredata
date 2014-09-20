@@ -1,5 +1,9 @@
-- Maybe change/improve pendulum mode? Is the length variable well 
-  implemented? Can the formula be implemented in a different way?
+- Some pan dynamic. (expansion and something more, maybe movement?)
+
+- Maybe change/improve pendulum mode? (or make an alternative one?)
+  Is the length variable well implemented? Can the formula be 
+  implemented in a different way?
   (maybe in another version?)
 
-- Make an analogish/smooth mode or version. (maybe in another version?)
+- Make it so pendulum, cubert, etc math that doesn't work with megative offset
+  works with negative offsets!
