@@ -1,5 +1,5 @@
-#N canvas 701 148 461 272 10;
-#N canvas 461 183 255 264 KickMaker 0;
+#N canvas 700 148 465 331 10;
+#N canvas 339 241 255 264 KickMaker 0;
 #N canvas 766 302 265 193 metronome 0;
 #X obj 103 58 expr 1000/($f1/60);
 #X obj 70 96 metro;
@@ -11,7 +11,7 @@
 #X connect 3 0 0 0;
 #X connect 4 0 1 0;
 #X restore 24 24 pd metronome;
-#N canvas 736 341 220 261 osc 0;
+#N canvas 351 269 295 273 osc 0;
 #X obj 100 27 inlet metronome;
 #X obj 68 179 osc~ 30;
 #X obj 32 31 r freq;
@@ -36,14 +36,18 @@
 #X connect 8 0 7 1;
 #X restore 75 82 pd freq_env;
 #X obj 62 135 +~;
-#X obj 100 52 t b f;
+#X obj 100 52 t b b;
+#X obj 205 27 r phase;
+#X floatatom 156 83 5 0 0 0 - - -;
 #X connect 0 0 6 0;
 #X connect 1 0 3 0;
 #X connect 2 0 5 0;
 #X connect 4 0 5 1;
 #X connect 5 0 1 0;
 #X connect 6 0 4 0;
-#X connect 6 1 1 1;
+#X connect 6 1 8 0;
+#X connect 7 0 8 0;
+#X connect 8 0 1 1;
 #X restore 21 92 pd osc;
 #N canvas 476 173 269 294 amp 0;
 #X obj 23 16 inlet~;
@@ -130,7 +134,7 @@
 #X connect 5 0 1 0;
 #X connect 5 0 2 1;
 #X connect 5 1 4 1;
-#X restore 42 234 pd KickMaker;
+#X restore 202 276 pd KickMaker;
 #X obj 12 94 cnv 15 150 120 empty empty empty 20 12 0 14 -204786 -66577
 0;
 #X obj 21 171 s amp_d;
@@ -139,34 +143,34 @@
 #X floatatom 23 141 5 0 0 0 - - -;
 #X text 56 143 ms;
 #X text 55 193 ms;
-#X obj 182 95 cnv 15 150 160 empty empty empty 20 12 0 14 -203904 -66577
+#X obj 181 95 cnv 15 150 160 empty empty empty 20 12 0 14 -203904 -66577
 0;
-#X obj 193 123 s freq_a;
-#X obj 193 173 s freq_d;
-#X floatatom 193 141 5 0 0 0 - - -;
-#X floatatom 193 191 5 0 0 0 - - -;
-#X text 227 142 ms;
-#X text 226 192 ms;
-#X obj 191 216 s freq_amt;
-#X floatatom 191 234 5 0 0 0 - - -;
-#X text 225 236 Hz;
+#X obj 192 123 s freq_a;
+#X obj 192 173 s freq_d;
+#X floatatom 192 141 5 0 0 0 - - -;
+#X floatatom 192 191 5 0 0 0 - - -;
+#X text 226 142 ms;
+#X text 225 192 ms;
+#X obj 190 216 s freq_amt;
+#X floatatom 190 234 5 0 0 0 - - -;
+#X text 224 236 Hz;
 #X text 27 96 Amplitude Envelope;
-#X text 198 100 Frequency Envelope;
+#X text 197 100 Frequency Envelope;
 #X obj 25 123 hsl 128 15 0 10 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 500 1;
+-1 -1 3800 1;
 #X obj 24 172 hsl 128 15 0 400 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 4600 1;
-#X obj 195 124 hsl 128 15 0 40 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 4400 1;
+#X obj 194 124 hsl 128 15 0 40 0 0 empty empty empty -2 -8 0 10 -262144
 -1 -1 0 1;
-#X obj 196 174 hsl 128 15 0 400 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 3200 1;
-#X obj 194 217 hsl 128 15 0 500 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 5200 1;
+#X obj 195 174 hsl 128 15 0 400 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 2800 1;
+#X obj 193 217 hsl 128 15 0 500 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 2200 1;
 #X text 96 135 Attack;
 #X text 98 186 Decay;
-#X text 266 138 Attack;
-#X text 265 189 Decay;
-#X text 268 232 Amount;
+#X text 265 138 Attack;
+#X text 264 189 Decay;
+#X text 267 232 Amount;
 #X obj 349 197 cnv 15 90 60 empty empty empty 20 12 0 14 -261234 -66577
 0;
 #X obj 372 207 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
@@ -176,7 +180,7 @@
 0;
 #X obj 190 41 s freq;
 #X obj 193 42 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 0 1;
+-1 -1 4900 1;
 #X floatatom 190 60 5 0 0 0 - - -;
 #X text 225 61 Hz;
 #X text 214 21 Root Frequency;
@@ -184,15 +188,23 @@
 0;
 #X obj 374 161 s volume;
 #X obj 374 26 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 12700 1;
+-1 -1 9100 1;
 #X obj 12 17 cnv 15 150 60 empty empty empty 20 12 0 14 -262130 -66577
 0;
-#X obj 95 38 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+#X obj 95 38 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1 1
 ;
 #X floatatom 34 38 5 0 0 0 - - -;
 #X obj 96 56 s play;
 #X obj 34 56 s bpm;
 #X text 63 17 Preview;
+#X obj 12 222 cnv 15 150 80 empty empty empty 20 12 0 14 -261682 -66577
+0;
+#X floatatom 22 271 5 0 0 0 - - -;
+#X obj 24 250 s phase;
+#X obj 27 251 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 3100 1;
+#X text 56 270 cycles;
+#X text 71 227 Phase;
 #X connect 20 0 3 0;
 #X connect 20 0 5 0;
 #X connect 21 0 2 0;
@@ -209,3 +221,5 @@
 #X connect 41 0 40 0;
 #X connect 43 0 45 0;
 #X connect 44 0 46 0;
+#X connect 51 0 49 0;
+#X connect 51 0 50 0;
