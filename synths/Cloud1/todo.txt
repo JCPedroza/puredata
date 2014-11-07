@@ -1,3 +1,5 @@
+- resonance feels weird still after keyboardtrack
+
 - variance in amp in sqr and saw separately
 
 - variance in envelopes
