@@ -1,12 +1,12 @@
 #N canvas 81 48 450 300 10;
-#N canvas 528 277 450 300 AD 0;
+#N canvas 528 277 450 300 AD 1;
 #X obj 97 22 inlet trigger;
 #X obj 158 243 outlet~;
 #X obj 152 179 vline~;
 #X msg 139 128 1 \$2 \, 0 \$3 \$2;
 #X obj 133 93 pack f f f;
 #X obj 197 22 inlet attack;
-#X obj 289 17 inlet relase;
+#X obj 289 17 inlet decay;
 #X connect 0 0 4 0;
 #X connect 2 0 1 0;
 #X connect 3 0 2 0;
