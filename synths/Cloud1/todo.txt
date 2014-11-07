@@ -1,3 +1,5 @@
+- amp env and its variance
+
 - resonance feels weird still after keyboardtrack
 
 - variance in amp in sqr and saw separately
@@ -5,3 +7,5 @@
 - variance in envelopes
 
 - variance in pitch
+
+
