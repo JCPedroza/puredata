@@ -1,0 +1,5 @@
+- variance in amp in sqr and saw separately
+
+- variance in envelopes
+
+- variance in pitch
