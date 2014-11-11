@@ -1,5 +1,5 @@
-#N canvas 387 22 782 538 10;
-#N canvas -10 67 450 300 Cloud1 1;
+#N canvas 554 22 782 538 10;
+#N canvas 0 67 450 300 Cloud1 1;
 #N canvas 761 398 450 300 trigger 0;
 #X obj 116 258 outlet;
 #X obj 104 117 metro 50;
@@ -18,7 +18,7 @@
 #X connect 6 0 1 1;
 #X connect 7 0 1 0;
 #X restore 177 12 pd trigger;
-#N canvas 419 395 956 545 MIDItoValue 1;
+#N canvas 243 389 956 545 MIDItoValue 0;
 #X obj -17 11 r metro_ceil;
 #X obj 86 11 r metro_floor;
 #X obj -17 59 s metro_ceil_v;
@@ -100,6 +100,15 @@
 #X obj 337 291 s sqr_freq_offset_v;
 #X obj 200 257 / 30;
 #X obj 337 255 / 30;
+#X obj 472 223 r sustain_level;
+#X obj 471 287 s sustain_level_v;
+#X obj 472 248 / 127;
+#X obj 592 226 r sustain_time;
+#X obj 591 291 s sustain_time_v;
+#X obj 587 261 expr $f1/127*4000;
+#X obj 714 231 r release;
+#X obj 716 284 s release_v;
+#X obj 716 257 expr $f1/127*1000;
 #X connect 0 0 3 0;
 #X connect 1 0 29 0;
 #X connect 3 0 2 0;
@@ -139,6 +148,12 @@
 #X connect 53 0 56 0;
 #X connect 55 0 51 0;
 #X connect 56 0 54 0;
+#X connect 57 0 59 0;
+#X connect 59 0 58 0;
+#X connect 60 0 62 0;
+#X connect 62 0 61 0;
+#X connect 63 0 65 0;
+#X connect 65 0 64 0;
 #X restore 12 13 pd MIDItoValue;
 #N canvas 857 439 450 300 selector 0;
 #X obj 123 49 inlet trigger;
@@ -259,19 +274,19 @@
 #X connect 12 0 10 1;
 #X connect 13 0 6 0;
 #X connect 13 1 2 0;
-#X restore 99 454 pd Cloud1;
+#X restore 100 481 pd Cloud1;
 #X obj 7 72 s metro_ceil;
 #X obj 10 52 hsl 128 15 0 127 0 1 empty empty empty -2 -8 0 10 -262144
 -1 -1 12700 1;
 #X obj 10 98 hsl 128 15 0 127 0 1 empty empty empty -2 -8 0 10 -262144
 -1 -1 11300 1;
 #X obj 8 121 s metro_floor;
-#X obj 7 6 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1 1;
+#X obj 7 6 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1;
 #X obj 8 29 s start;
 #X obj 181 114 hsl 128 15 0 127 0 1 empty empty empty -2 -8 0 10 -262144
 -1 -1 0 1;
 #X obj 180 158 hsl 128 15 0 127 0 1 empty empty empty -2 -8 0 10 -262144
--1 -1 2300 1;
+-1 -1 2700 1;
 #X obj 178 133 s attack;
 #X obj 177 178 s decay;
 #X obj 185 12 hsl 128 15 0 127 0 1 empty empty empty -2 -8 0 10 -262144
@@ -305,8 +320,8 @@
 #X connect 5 1 0 1;
 #X connect 6 0 10 0;
 #X connect 7 0 6 0;
-#X restore 8 453 pd cpu_usage;
-#X floatatom 8 475 5 0 0 0 - - -;
+#X restore 9 480 pd cpu_usage;
+#X floatatom 9 502 5 0 0 0 - - -;
 #X obj 502 187 hsl 128 15 0 127 0 1 empty empty empty -2 -8 0 10 -262144
 -1 -1 0 1;
 #X obj 499 209 s pan_variance;
@@ -333,12 +348,12 @@
 #X text 607 44 100%;
 #X text 498 107 0%;
 #X text 601 107 100%;
-#X obj 10 248 hsl 128 15 0 127 0 1 empty empty empty -2 -8 0 10 -262144
+#X obj 378 329 hsl 128 15 0 127 0 1 empty empty empty -2 -8 0 10 -262144
 -1 -1 0 1;
-#X obj 7 270 s saw_freq_variance;
-#X obj 10 293 hsl 128 15 0 127 0 1 empty empty empty -2 -8 0 10 -262144
+#X obj 375 351 s saw_freq_variance;
+#X obj 378 374 hsl 128 15 0 127 0 1 empty empty empty -2 -8 0 10 -262144
 -1 -1 0 1;
-#X obj 7 315 s sqr_freq_variance;
+#X obj 375 396 s sqr_freq_variance;
 #X obj 357 61 hsl 128 15 0 127 0 1 empty empty empty -2 -8 0 10 -262144
 -1 -1 12700 1;
 #X obj 354 82 s saw_volume;
@@ -349,12 +364,21 @@
 #X obj 354 143 s sqr_volume;
 #X text 354 107 0%;
 #X text 460 107 100%;
-#X obj 167 267 s saw_freq_offset;
-#X obj 164 313 s sqr_freq_offset;
-#X obj 170 248 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
+#X obj 535 348 s saw_freq_offset;
+#X obj 532 394 s sqr_freq_offset;
+#X obj 538 329 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
 -1 -1 0 1;
-#X obj 167 291 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
+#X obj 535 372 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
 -1 -1 0 1;
+#X obj 179 202 hsl 128 15 0 127 0 1 empty empty empty -2 -8 0 10 -262144
+-1 -1 4800 1;
+#X obj 177 252 hsl 128 15 0 127 0 1 empty empty empty -2 -8 0 10 -262144
+-1 -1 6900 1;
+#X obj 174 274 s sustain_time;
+#X obj 174 306 hsl 128 15 0 127 0 1 empty empty empty -2 -8 0 10 -262144
+-1 -1 2700 1;
+#X obj 171 329 s release;
+#X obj 176 222 s sustain_level;
 #X connect 2 0 1 0;
 #X connect 3 0 4 0;
 #X connect 5 0 6 0;
@@ -375,3 +399,6 @@
 #X connect 49 0 50 0;
 #X connect 55 0 53 0;
 #X connect 56 0 54 0;
+#X connect 57 0 62 0;
+#X connect 58 0 59 0;
+#X connect 60 0 61 0;
