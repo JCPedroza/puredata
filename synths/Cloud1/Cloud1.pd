@@ -18,7 +18,7 @@
 #X connect 6 0 1 1;
 #X connect 7 0 1 0;
 #X restore 177 12 pd trigger;
-#N canvas 310 287 956 545 MIDItoValue 1;
+#N canvas 419 395 956 545 MIDItoValue 1;
 #X obj -17 11 r metro_ceil;
 #X obj 86 11 r metro_floor;
 #X obj -17 59 s metro_ceil_v;
@@ -94,6 +94,12 @@
 #X restore 96 267 pd smoother;
 #X obj 95 288 s~ sqr_volume_v;
 #X obj -7 289 s~ saw_volume_v;
+#X obj 201 289 s saw_freq_offset_v;
+#X obj 202 223 r saw_freq_offset;
+#X obj 339 224 r sqr_freq_offset;
+#X obj 337 291 s sqr_freq_offset_v;
+#X obj 200 257 / 30;
+#X obj 337 255 / 30;
 #X connect 0 0 3 0;
 #X connect 1 0 29 0;
 #X connect 3 0 2 0;
@@ -129,6 +135,10 @@
 #X connect 46 0 48 0;
 #X connect 47 0 50 0;
 #X connect 48 0 49 0;
+#X connect 52 0 55 0;
+#X connect 53 0 56 0;
+#X connect 55 0 51 0;
+#X connect 56 0 54 0;
 #X restore 12 13 pd MIDItoValue;
 #N canvas 857 439 450 300 selector 0;
 #X obj 123 49 inlet trigger;
@@ -174,7 +184,7 @@
 #X restore 132 59 pd freq_list;
 #X floatatom 132 81 8 0 0 0 - - -;
 #X obj 133 101 s random_freq;
-#N canvas 553 393 757 394 cells 1;
+#N canvas 553 393 757 394 cells 0;
 #X obj 60 36 synthcell 0;
 #X floatatom 44 58 5 0 0 0 - - -;
 #X floatatom 82 58 5 0 0 0 - - -;
@@ -339,6 +349,12 @@
 #X obj 354 143 s sqr_volume;
 #X text 354 107 0%;
 #X text 460 107 100%;
+#X obj 167 267 s saw_freq_offset;
+#X obj 164 313 s sqr_freq_offset;
+#X obj 170 248 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 167 291 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
 #X connect 2 0 1 0;
 #X connect 3 0 4 0;
 #X connect 5 0 6 0;
@@ -357,3 +373,5 @@
 #X connect 43 0 44 0;
 #X connect 45 0 46 0;
 #X connect 49 0 50 0;
+#X connect 55 0 53 0;
+#X connect 56 0 54 0;
