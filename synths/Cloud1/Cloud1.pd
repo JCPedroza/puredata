@@ -1,4 +1,4 @@
-#N canvas 639 64 508 411 10;
+#N canvas 890 262 551 526 10;
 #N canvas 81 72 450 300 Cloud1 1;
 #N canvas 761 398 450 300 trigger 0;
 #X obj 116 258 outlet;
@@ -64,6 +64,12 @@
 #X obj 266 168 / 127;
 #X obj 428 164 / 127;
 #X obj 180 33 expr $f1/127*300;
+#X obj 588 140 r saw_freq_variance;
+#X obj 763 141 r sqr_freq_variance;
+#X obj 586 194 s saw_freq_variance_v;
+#X obj 763 190 s sqr_freq_variance_v;
+#X obj 588 164 / 30;
+#X obj 763 163 / 30;
 #X connect 0 0 3 0;
 #X connect 1 0 29 0;
 #X connect 3 0 2 0;
@@ -89,6 +95,10 @@
 #X connect 34 0 32 0;
 #X connect 35 0 33 0;
 #X connect 36 0 6 0;
+#X connect 37 0 41 0;
+#X connect 38 0 42 0;
+#X connect 41 0 39 0;
+#X connect 42 0 40 0;
 #X restore 12 13 pd MIDItoValue;
 #N canvas 857 439 450 300 selector 0;
 #X obj 123 49 inlet trigger;
@@ -105,9 +115,9 @@
 #X connect 3 0 1 1;
 #X connect 5 0 3 0;
 #X connect 6 0 4 0;
-#X restore 120 65 pd selector;
-#X floatatom 120 86 5 0 0 0 - - -;
-#X obj 120 107 s selection;
+#X restore 229 61 pd selector;
+#X floatatom 229 82 5 0 0 0 - - -;
+#X obj 229 103 s selection;
 #X obj 188 270 dac~;
 #N canvas 677 323 450 300 freq_list 0;
 #X obj 196 74 t l l;
@@ -131,10 +141,10 @@
 #X connect 7 1 2 1;
 #X connect 8 0 0 0;
 #X connect 9 0 6 0;
-#X restore 205 65 pd freq_list;
-#X floatatom 205 87 8 0 0 0 - - -;
-#X obj 206 107 s random_freq;
-#N canvas 125 415 757 394 cells 0;
+#X restore 132 59 pd freq_list;
+#X floatatom 132 81 8 0 0 0 - - -;
+#X obj 133 101 s random_freq;
+#N canvas 553 393 757 394 cells 0;
 #X obj 60 36 synthcell 0;
 #X floatatom 44 58 5 0 0 0 - - -;
 #X floatatom 82 58 5 0 0 0 - - -;
@@ -209,30 +219,30 @@
 #X connect 12 0 10 1;
 #X connect 13 0 6 0;
 #X connect 13 1 2 0;
-#X restore 205 373 pd Cloud1;
+#X restore 99 454 pd Cloud1;
 #X obj 7 72 s metro_ceil;
 #X obj 10 52 hsl 128 15 0 127 0 1 empty empty empty -2 -8 0 10 -262144
 -1 -1 12700 1;
 #X obj 10 98 hsl 128 15 0 127 0 1 empty empty empty -2 -8 0 10 -262144
 -1 -1 12700 1;
 #X obj 8 121 s metro_floor;
-#X obj 7 6 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1;
+#X obj 7 6 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1 1;
 #X obj 8 29 s start;
-#X obj 159 108 hsl 128 15 0 127 0 1 empty empty empty -2 -8 0 10 -262144
+#X obj 181 114 hsl 128 15 0 127 0 1 empty empty empty -2 -8 0 10 -262144
 -1 -1 0 1;
-#X obj 158 152 hsl 128 15 0 127 0 1 empty empty empty -2 -8 0 10 -262144
--1 -1 12700 1;
-#X obj 156 127 s attack;
-#X obj 155 172 s decay;
-#X obj 163 6 hsl 128 15 0 127 0 1 empty empty empty -2 -8 0 10 -262144
--1 -1 4800 1;
-#X obj 160 27 s cutoff;
-#X obj 160 59 hsl 128 15 0 127 0 1 empty empty empty -2 -8 0 10 -262144
+#X obj 180 158 hsl 128 15 0 127 0 1 empty empty empty -2 -8 0 10 -262144
+-1 -1 2300 1;
+#X obj 178 133 s attack;
+#X obj 177 178 s decay;
+#X obj 185 12 hsl 128 15 0 127 0 1 empty empty empty -2 -8 0 10 -262144
+-1 -1 4400 1;
+#X obj 182 33 s cutoff;
+#X obj 182 65 hsl 128 15 0 127 0 1 empty empty empty -2 -8 0 10 -262144
 -1 -1 0 1;
-#X obj 158 79 s res;
+#X obj 180 85 s res;
 #X obj 353 27 s volume;
 #X obj 362 265 hsl 128 15 0 127 0 1 empty empty empty -2 -8 0 10 -262144
--1 -1 6400 1;
+-1 -1 6600 1;
 #X obj 359 285 s pan;
 #N canvas 376 313 450 300 cpu_usage 0;
 #X obj 149 161 cputime;
@@ -255,8 +265,8 @@
 #X connect 5 1 0 1;
 #X connect 6 0 10 0;
 #X connect 7 0 6 0;
-#X restore 13 321 pd cpu_usage;
-#X floatatom 13 343 5 0 0 0 - - -;
+#X restore 8 453 pd cpu_usage;
+#X floatatom 8 475 5 0 0 0 - - -;
 #X obj 364 326 hsl 128 15 0 127 0 1 empty empty empty -2 -8 0 10 -262144
 -1 -1 0 1;
 #X obj 361 348 s pan_variance;
@@ -283,6 +293,12 @@
 #X text 466 119 100%;
 #X text 356 181 0%;
 #X text 459 181 100%;
+#X obj 10 248 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 6600 1;
+#X obj 7 270 s saw_freq_variance;
+#X obj 10 293 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 6400 1;
+#X obj 7 315 s sqr_freq_variance;
 #X connect 2 0 1 0;
 #X connect 3 0 4 0;
 #X connect 5 0 6 0;
@@ -297,3 +313,5 @@
 #X connect 30 0 15 0;
 #X connect 33 0 34 0;
 #X connect 35 0 36 0;
+#X connect 41 0 42 0;
+#X connect 43 0 44 0;

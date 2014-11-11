@@ -6,6 +6,3 @@
 
 - variance in envelopes
 
-- variance in pitch
-
-
