@@ -48,6 +48,6 @@ time);
 #X text 18 33 1: Trigger (bang);
 #X text 18 48 2: Attack (ms);
 #X text 18 63 3: Decay (ms);
-#X text 18 78 4: Sustain (0 - 1);
 #X text 17 92 5: Sustain Time (ms);
 #X text 17 107 6: Release (ms);
+#X text 18 78 4: Sustain Level (0 - 1);
