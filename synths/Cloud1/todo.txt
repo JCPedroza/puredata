@@ -1,5 +1,6 @@
-
 - amp env and its variance
 
 - variance in envelopes
+
+- LFOs (separate for saw and sqr in filter and amp)
 

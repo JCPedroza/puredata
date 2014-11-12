@@ -1,4 +1,4 @@
-#N canvas 477 39 782 538 10;
+#N canvas 531 200 782 538 10;
 #N canvas 0 67 450 300 Cloud1 1;
 #N canvas 761 398 450 300 trigger 0;
 #X obj 116 258 outlet;
@@ -174,17 +174,103 @@
 #X floatatom 229 82 5 0 0 0 - - -;
 #X obj 229 103 s selection;
 #X obj 188 270 dac~;
-#N canvas 677 323 450 300 freq_list 0;
-#X obj 196 74 t l l;
-#X obj 242 105 list length;
-#X obj 240 164 random;
-#X obj 185 190 list split;
-#X obj 222 217 list split 1;
-#X obj 193 20 inlet trigger;
-#X obj 222 263 outlet freq;
-#X obj 242 138 t b f;
-#X obj 73 41 list 65.4064 32.7032 130.813 164.814 123.471 146.832;
-#X obj 220 239 * 2.5;
+#N canvas 649 37 462 377 freq_list 1;
+#X obj 196 133 t l l;
+#X obj 242 164 list length;
+#X obj 240 223 random;
+#X obj 185 249 list split;
+#X obj 222 276 list split 1;
+#X obj 197 44 inlet trigger;
+#X obj 223 322 outlet freq;
+#X obj 242 197 t b f;
+#N canvas 455 318 572 308 list-MIDInoteon 0;
+#X obj 153 17 inlet bang;
+#N canvas 623 364 450 300 on_off_route 0;
+#X obj 86 31 notein;
+#X obj 72 72 pack f f;
+#X obj 72 132 route 0;
+#X obj 72 102 zl rev;
+#X obj 23 245 outlet on;
+#X obj 114 246 outlet off;
+#X obj 111 160 list split 1;
+#X text 192 16 Routes MIDI note on messages to;
+#X text 192 34 the left outlet \, and note off;
+#X text 193 52 messages to the right outlet;
+#X connect 0 0 1 0;
+#X connect 0 1 1 1;
+#X connect 1 0 3 0;
+#X connect 2 0 5 0;
+#X connect 2 1 6 0;
+#X connect 3 0 2 0;
+#X connect 6 1 4 0;
+#X restore 258 26 pd on_off_route;
+#X obj 207 126 list-extend;
+#N canvas 429 293 527 367 list-deletevalue 0;
+#X obj 174 23 inlet list;
+#X obj 68 25 inlet value;
+#X obj 92 75 list-find;
+#X obj 137 226 list-delete;
+#X obj 159 185 list;
+#X obj 78 313 outlet;
+#X obj 157 106 limit 0 1;
+#X obj 80 269 switch;
+#X obj 156 130 + 1;
+#X obj 156 155 t b f;
+#X text -128 121 the value is not found;
+#X text -133 13 Inlet 0: Value to delete;
+#X text -134 31 Inlet 1: A list;
+#X text -130 80 then the value to delete;
+#X text -139 64 - First input the list \,;
+#X text -141 106 - Outputs the complete list if;
+#X obj 177 50 list;
+#X text -142 154 - Stores the output list.;
+#X connect 0 0 16 0;
+#X connect 1 0 2 0;
+#X connect 2 0 3 1;
+#X connect 2 1 6 0;
+#X connect 3 0 7 2;
+#X connect 4 0 3 0;
+#X connect 4 0 7 1;
+#X connect 6 0 8 0;
+#X connect 7 0 5 0;
+#X connect 7 0 16 0;
+#X connect 8 0 9 0;
+#X connect 9 0 4 0;
+#X connect 9 1 7 0;
+#X connect 16 0 4 1;
+#X connect 16 0 2 1;
+#X restore 272 215 pd list-deletevalue;
+#X obj 249 169 spigot;
+#X msg 338 87 1;
+#X obj 222 59 t f b;
+#X msg 243 85 0;
+#X obj 319 56 t f b b;
+#X obj 201 264 outlet;
+#X obj 203 181 list;
+#X text -95 23 Keeps track in a list of which keys;
+#X text -84 39 are being pressed (MIDI note on);
+#X text -89 103 - Outlet: List of MIDI note on (keys;
+#X text -88 83 - Inlet: Bang to get the list.;
+#X text -77 117 that are being pressed).;
+#X connect 0 0 2 0;
+#X connect 0 0 10 0;
+#X connect 1 0 6 0;
+#X connect 1 1 8 0;
+#X connect 2 0 4 0;
+#X connect 2 0 10 1;
+#X connect 3 0 2 1;
+#X connect 4 0 3 1;
+#X connect 5 0 4 1;
+#X connect 6 0 2 0;
+#X connect 6 1 7 0;
+#X connect 7 0 4 1;
+#X connect 8 0 3 0;
+#X connect 8 1 2 0;
+#X connect 8 2 5 0;
+#X connect 10 0 9 0;
+#X restore 195 73 pd list-MIDInoteon;
+#X obj 222 299 mtof;
+#X obj 113 152 print LIST;
 #X connect 0 0 3 0;
 #X connect 0 1 1 0;
 #X connect 1 0 7 0;
@@ -195,6 +281,7 @@
 #X connect 7 0 2 0;
 #X connect 7 1 2 1;
 #X connect 8 0 0 0;
+#X connect 8 0 10 0;
 #X connect 9 0 6 0;
 #X restore 132 59 pd freq_list;
 #X floatatom 132 81 8 0 0 0 - - -;
@@ -433,10 +520,12 @@
 #X obj 137 208 catch~ synth_L;
 #X obj 243 208 catch~ synth_R;
 #X obj 177 33 t b b;
+#X obj 92 126 print rnd_freq;
 #X connect 0 0 13 0;
 #X connect 2 0 3 0;
 #X connect 3 0 4 0;
 #X connect 6 0 7 0;
+#X connect 6 0 14 0;
 #X connect 7 0 8 0;
 #X connect 10 0 5 0;
 #X connect 10 1 5 1;
@@ -449,18 +538,18 @@
 #X obj 10 52 hsl 128 15 0 127 0 1 empty empty empty -2 -8 0 10 -262144
 -1 -1 12700 1;
 #X obj 10 98 hsl 128 15 0 127 0 1 empty empty empty -2 -8 0 10 -262144
--1 -1 400 1;
+-1 -1 10700 1;
 #X obj 8 121 s metro_floor;
 #X obj 7 6 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1 1;
 #X obj 8 29 s start;
 #X obj 181 114 hsl 128 15 0 127 0 1 empty empty empty -2 -8 0 10 -262144
--1 -1 1200 1;
+-1 -1 0 1;
 #X obj 180 158 hsl 128 15 0 127 0 1 empty empty empty -2 -8 0 10 -262144
--1 -1 4000 1;
+-1 -1 1600 1;
 #X obj 178 133 s attack;
 #X obj 177 178 s decay;
 #X obj 185 12 hsl 128 15 0 127 0 1 empty empty empty -2 -8 0 10 -262144
--1 -1 12700 1;
+-1 -1 9200 1;
 #X obj 182 33 s cutoff;
 #X obj 182 65 hsl 128 15 0 127 0 1 empty empty empty -2 -8 0 10 -262144
 -1 -1 0 1;
@@ -519,10 +608,10 @@
 #X text 498 107 0%;
 #X text 601 107 100%;
 #X obj 378 329 hsl 128 15 0 127 0 1 empty empty empty -2 -8 0 10 -262144
--1 -1 4800 1;
+-1 -1 4700 1;
 #X obj 375 351 s saw_freq_variance;
 #X obj 378 374 hsl 128 15 0 127 0 1 empty empty empty -2 -8 0 10 -262144
--1 -1 4600 1;
+-1 -1 4900 1;
 #X obj 375 396 s sqr_freq_variance;
 #X obj 357 61 hsl 128 15 0 127 0 1 empty empty empty -2 -8 0 10 -262144
 -1 -1 12700 1;
@@ -530,7 +619,7 @@
 #X text 353 46 0%;
 #X text 461 45 100%;
 #X obj 357 122 hsl 128 15 0 127 0 1 empty empty empty -2 -8 0 10 -262144
--1 -1 12700 1;
+-1 -1 0 1;
 #X obj 354 143 s sqr_volume;
 #X text 354 107 0%;
 #X text 460 107 100%;
@@ -541,12 +630,12 @@
 #X obj 535 372 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
 -1 -1 0 1;
 #X obj 179 202 hsl 128 15 0 127 0 1 empty empty empty -2 -8 0 10 -262144
--1 -1 4800 1;
+-1 -1 2800 1;
 #X obj 177 252 hsl 128 15 0 127 0 1 empty empty empty -2 -8 0 10 -262144
--1 -1 2900 1;
+-1 -1 8100 1;
 #X obj 174 274 s sustain_time;
 #X obj 174 306 hsl 128 15 0 127 0 1 empty empty empty -2 -8 0 10 -262144
--1 -1 2900 1;
+-1 -1 3700 1;
 #X obj 171 329 s release;
 #X obj 176 222 s sustain_level;
 #X connect 2 0 1 0;
