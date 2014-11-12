@@ -1,4 +1,4 @@
-#N canvas 700 148 465 331 10;
+#N canvas 546 72 465 331 10;
 #N canvas 339 241 255 264 KickMaker 0;
 #N canvas 766 302 265 193 metronome 0;
 #X obj 103 58 expr 1000/($f1/60);
@@ -19,21 +19,27 @@
 #N canvas 291 336 450 300 freq_env 0;
 #X obj 97 22 inlet trigger;
 #X obj 159 263 outlet~;
-#X obj 152 179 vline~;
-#X msg 139 128 1 \$2 \, 0 \$3 \$2;
-#X obj 133 93 pack f f f;
 #X obj 197 22 r freq_a;
 #X obj 264 22 r freq_d;
 #X obj 169 221 *~ 0;
 #X obj 328 18 r freq_amt;
-#X connect 0 0 4 0;
-#X connect 2 0 7 0;
-#X connect 3 0 2 0;
-#X connect 4 0 3 0;
+#X obj 159 115 vline~;
+#X msg 159 91 1 \$2 \, 0 \$3 \$2;
+#X obj 159 69 pack f f f;
+#X obj 159 141 *~;
+#X obj 159 166 *~;
+#X connect 0 0 8 0;
+#X connect 2 0 8 1;
+#X connect 3 0 8 2;
+#X connect 4 0 1 0;
 #X connect 5 0 4 1;
-#X connect 6 0 4 2;
-#X connect 7 0 1 0;
-#X connect 8 0 7 1;
+#X connect 6 0 9 0;
+#X connect 6 0 9 1;
+#X connect 7 0 6 0;
+#X connect 8 0 7 0;
+#X connect 9 0 10 0;
+#X connect 9 0 10 1;
+#X connect 10 0 4 0;
 #X restore 75 82 pd freq_env;
 #X obj 62 135 +~;
 #X obj 100 52 t b b;
@@ -54,20 +60,26 @@
 #X obj 104 263 outlet~;
 #X obj 190 23 r volume;
 #X obj 81 19 inlet metronome;
-#N canvas 686 466 450 300 amp_env 0;
+#N canvas 686 457 450 300 amp_env 0;
 #X obj 88 19 inlet trigger;
 #X obj 168 224 outlet~;
-#X obj 167 146 vline~;
-#X msg 164 112 1 \$2 \, 0 \$3 \$2;
-#X obj 162 88 pack f f f;
 #X obj 187 19 r amp_a;
 #X obj 253 17 r amp_d;
-#X connect 0 0 4 0;
-#X connect 2 0 1 0;
-#X connect 3 0 2 0;
-#X connect 4 0 3 0;
-#X connect 5 0 4 1;
-#X connect 6 0 4 2;
+#X obj 163 119 vline~;
+#X msg 163 95 1 \$2 \, 0 \$3 \$2;
+#X obj 163 73 pack f f f;
+#X obj 163 145 *~;
+#X obj 163 170 *~;
+#X connect 0 0 6 0;
+#X connect 2 0 6 1;
+#X connect 3 0 6 2;
+#X connect 4 0 7 0;
+#X connect 4 0 7 1;
+#X connect 5 0 4 0;
+#X connect 6 0 5 0;
+#X connect 7 0 8 0;
+#X connect 7 0 8 1;
+#X connect 8 0 1 0;
 #X restore 72 60 pd amp_env;
 #X obj 47 98 *~;
 #N canvas 763 354 450 300 smoother 0;
@@ -157,15 +169,15 @@
 #X text 27 96 Amplitude Envelope;
 #X text 197 100 Frequency Envelope;
 #X obj 25 123 hsl 128 15 0 10 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 3800 1;
+-1 -1 0 1;
 #X obj 24 172 hsl 128 15 0 400 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 4400 1;
+-1 -1 3100 1;
 #X obj 194 124 hsl 128 15 0 40 0 0 empty empty empty -2 -8 0 10 -262144
 -1 -1 0 1;
 #X obj 195 174 hsl 128 15 0 400 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 2800 1;
-#X obj 193 217 hsl 128 15 0 500 0 0 empty empty empty -2 -8 0 10 -262144
 -1 -1 2200 1;
+#X obj 193 217 hsl 128 15 0 500 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 6500 1;
 #X text 96 135 Attack;
 #X text 98 186 Decay;
 #X text 265 138 Attack;
@@ -180,7 +192,7 @@
 0;
 #X obj 190 41 s freq;
 #X obj 193 42 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 4900 1;
+-1 -1 0 1;
 #X floatatom 190 60 5 0 0 0 - - -;
 #X text 225 61 Hz;
 #X text 214 21 Root Frequency;
@@ -188,7 +200,7 @@
 0;
 #X obj 374 161 s volume;
 #X obj 374 26 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 9100 1;
+-1 -1 8900 1;
 #X obj 12 17 cnv 15 150 60 empty empty empty 20 12 0 14 -262130 -66577
 0;
 #X obj 95 38 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1 1
@@ -202,7 +214,7 @@
 #X floatatom 22 271 5 0 0 0 - - -;
 #X obj 24 250 s phase;
 #X obj 27 251 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 3100 1;
+-1 -1 0 1;
 #X text 56 270 cycles;
 #X text 71 227 Phase;
 #X connect 20 0 3 0;
