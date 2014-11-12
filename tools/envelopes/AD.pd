@@ -1,5 +1,5 @@
 #N canvas 81 48 450 300 10;
-#N canvas 528 277 450 300 AD 1;
+#N canvas 528 277 450 300 AD 0;
 #X obj 97 22 inlet trigger;
 #X obj 158 243 outlet~;
 #X obj 152 179 vline~;
