@@ -1,4 +1,4 @@
-#N canvas 500 113 573 588 10;
+#N canvas 310 57 573 588 10;
 #X floatatom 247 386 5 0 0 0 - - -;
 #X obj 247 343 line;
 #X obj 246 428 phasor~;
@@ -6,11 +6,11 @@
 #X obj 428 68 bng 15 150 50 0 empty empty empty 17 7 0 10 -4034 -1
 -1;
 #X obj 490 73 vsl 15 128 0 0.8 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 10200 1;
+-1 -1 1500 1;
 #X obj 247 467 *~;
 #X text 480 49 volume;
 #X msg 86 192 set 0;
-#X obj 92 115 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 92 115 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X text 408 49 start/stop;
 #X floatatom 47 160 5 0 0 0 - - -;
