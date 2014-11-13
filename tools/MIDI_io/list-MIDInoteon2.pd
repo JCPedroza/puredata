@@ -1,5 +1,12 @@
-#N canvas 517 35 474 330 10;
-#N canvas 645 300 462 405 list-MIDInoteon2 0;
+#N canvas 190 221 297 254 10;
+#X text 31 77 Keeps track in a list of which keys;
+#X text 38 92 are being pressed (MIDI note on);
+#X text 39 197 - Outlet: List of MIDI note on (keys;
+#X text 40 177 - Inlet: Bang to get the list.;
+#X text 51 211 that are being pressed).;
+#X text 9 19 Simpler approach \, uses vanilla objects only;
+#X text 22 37 By Patrice Colet from PD mailing list;
+#N canvas 645 300 462 405 listOfMIDINoteOn2 0;
 #N canvas 1019 51 274 329 on_off_route 0;
 #X obj 86 31 notein;
 #X obj 72 132 route 0;
@@ -52,10 +59,4 @@
 #X connect 13 0 2 0;
 #X connect 14 0 8 1;
 #X connect 16 0 6 0;
-#X restore 171 138 pd list-MIDInoteon2;
-#X text 136 55 Keeps track in a list of which keys;
-#X text 143 70 are being pressed (MIDI note on);
-#X text 139 222 - Outlet: List of MIDI note on (keys;
-#X text 140 202 - Inlet: Bang to get the list.;
-#X text 151 236 that are being pressed).;
-#X text 124 10 Simpler approach \, uses vanilla objects only;
+#X restore 72 137 pd listOfMIDINoteOn2;
