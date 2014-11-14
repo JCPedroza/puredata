@@ -1,4 +1,4 @@
-#N canvas 681 138 237 322 10;
+#N canvas 229 270 237 322 10;
 #N canvas 226 164 393 462 Wat 0;
 #X obj 95 341 dac~;
 #X obj 41 89 osc~;
@@ -23,7 +23,6 @@
 #X connect 3 0 1 0;
 #X restore 124 27 pd smoother;
 #X obj 100 294 *~;
-#X obj 43 192 *~ 0.2;
 #N canvas 763 354 450 300 smoother 0;
 #X obj 194 81 inlet;
 #X obj 197 165 outlet~;
@@ -102,45 +101,46 @@
 #X connect 5 0 1 0;
 #X connect 6 0 3 0;
 #X restore 142 337 pd record;
+#X obj 43 191 *~ 0.5;
 #X connect 1 0 3 0;
 #X connect 2 0 3 1;
-#X connect 3 0 9 0;
-#X connect 4 0 25 1;
-#X connect 5 0 24 1;
+#X connect 3 0 8 0;
+#X connect 4 0 24 1;
+#X connect 5 0 23 1;
 #X connect 6 0 0 0;
 #X connect 6 0 0 1;
-#X connect 6 0 36 0;
-#X connect 7 0 15 0;
+#X connect 6 0 35 0;
+#X connect 7 0 9 0;
 #X connect 8 0 10 0;
-#X connect 9 0 11 0;
-#X connect 10 0 9 1;
-#X connect 11 0 7 0;
-#X connect 13 0 23 1;
-#X connect 14 0 16 0;
-#X connect 15 0 6 0;
+#X connect 9 0 8 1;
+#X connect 10 0 36 0;
+#X connect 12 0 22 1;
+#X connect 13 0 15 0;
+#X connect 14 0 6 0;
+#X connect 15 0 16 0;
 #X connect 16 0 17 0;
-#X connect 17 0 18 0;
-#X connect 18 0 15 1;
-#X connect 19 0 22 1;
+#X connect 17 0 14 1;
+#X connect 18 0 21 1;
+#X connect 19 0 20 0;
 #X connect 20 0 21 0;
 #X connect 21 0 22 0;
-#X connect 22 0 23 0;
-#X connect 22 0 25 0;
-#X connect 22 0 24 0;
-#X connect 23 0 14 0;
-#X connect 24 0 2 0;
-#X connect 25 0 1 0;
-#X connect 28 0 4 0;
-#X connect 29 0 5 0;
-#X connect 30 0 8 0;
-#X connect 31 0 6 1;
-#X connect 32 0 13 0;
-#X connect 33 0 17 1;
-#X connect 34 0 20 0;
-#X connect 35 0 19 0;
+#X connect 21 0 24 0;
+#X connect 21 0 23 0;
+#X connect 22 0 13 0;
+#X connect 23 0 2 0;
+#X connect 24 0 1 0;
+#X connect 27 0 4 0;
+#X connect 28 0 5 0;
+#X connect 29 0 7 0;
+#X connect 30 0 6 1;
+#X connect 31 0 12 0;
+#X connect 32 0 16 1;
+#X connect 33 0 19 0;
+#X connect 34 0 18 0;
+#X connect 36 0 14 0;
 #X restore 97 242 pd Wat;
 #X obj 93 -32 hsl 50 15 0 1 0 0 \$0_volume empty volume 5 8 0 10 -262144
--1 -1 0 1;
+-1 -1 4900 1;
 #X obj 18 -7 cnv 15 200 70 empty empty Oscillators 8 10 0 14 -261234
 -86277 0;
 #X floatatom 25 37 5 0 0 2 osc1_freq - #0_osc1_freq;
@@ -154,7 +154,7 @@
 0;
 #X floatatom 27 137 5 0 0 2 am_freq - #0_am_freq;
 #X obj 92 132 hsl 50 15 0 1 0 0 \$0_am_amt empty am_amt 5 8 0 10 -262144
--1 -1 4900 1;
+-1 -1 0 1;
 #X obj 19 170 cnv 15 200 60 empty empty Record 75 40 0 14 -262130 -83269
 0;
 #X obj 51 176 bng 15 250 50 0 \$0_start_recording empty start 20 7
