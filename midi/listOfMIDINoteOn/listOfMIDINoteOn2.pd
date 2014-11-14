@@ -1,6 +1,4 @@
 #N canvas 190 221 297 254 10;
-#X text 31 77 Keeps track in a list of which keys;
-#X text 38 92 are being pressed (MIDI note on);
 #X text 39 197 - Outlet: List of MIDI note on (keys;
 #X text 40 177 - Inlet: Bang to get the list.;
 #X text 51 211 that are being pressed).;
@@ -60,3 +58,4 @@
 #X connect 14 0 8 1;
 #X connect 16 0 6 0;
 #X restore 72 137 pd listOfMIDINoteOn2;
+#X text 72 98 List of MIDI note-on;

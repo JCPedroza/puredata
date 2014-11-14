@@ -36,13 +36,12 @@
 #X connect 14 1 6 0;
 #X connect 14 2 9 1;
 #X connect 14 2 1 1;
-#X restore 74 187 pd listOfMIDINoteOn4;
-#X text 22 66 Keeps track in a list of which keys;
-#X text 29 81 are being pressed (MIDI note on);
+#X restore 64 195 pd listOfMIDINoteOn4;
 #X text 30 12 Different approach \, using [bag];
 #X text 26 30 By Simon Wise from PD mailing list;
 #X text 39 274 - Outlet: List of MIDI note on (keys;
 #X text 41 248 - Inlet: Bang to get the list.;
 #X text 51 288 that are being pressed).;
-#X text 23 113 Changed by him to be "more consistent";
-#X text 25 129 (in ver 3 position changes per query);
+#X text 23 84 Changed by him to be "more consistent";
+#X text 25 100 (in ver 3 position changes per query);
+#X text 69 151 List of MIDI note-on;

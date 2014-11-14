@@ -1,12 +1,10 @@
 #N canvas 747 149 253 277 10;
-#X text 14 79 Keeps track in a list of which keys;
-#X text 21 94 are being pressed (MIDI note on);
 #X text 22 212 - Outlet: List of MIDI note on (keys;
 #X text 22 188 - Inlet: Bang to get the list.;
 #X text 34 226 that are being pressed).;
 #X text 21 21 Different approach \, using [bag];
 #X text 17 39 By Simon Wise from PD mailing list;
-#N canvas 473 144 280 318 listOfMIDINoteOn3 1;
+#N canvas 473 144 280 318 listOfMIDINoteOn3 0;
 #X obj 87 164 bag;
 #X obj 87 198 list prepend;
 #X obj 56 246 list;
@@ -43,3 +41,4 @@
 #X connect 11 0 0 0;
 #X connect 13 0 4 0;
 #X restore 58 138 pd listOfMIDINoteOn3;
+#X text 59 104 List of MIDI note-on;
