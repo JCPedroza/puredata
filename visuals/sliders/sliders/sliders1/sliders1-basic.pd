@@ -1,0 +1,73 @@
+#N canvas 671 155 471 375 10;
+#N canvas 145 181 456 418 sliders1 1;
+#X obj 172 73 osc~;
+#X floatatom 173 49 5 0 0 0 - - -;
+#X obj 190 113 snapshot~;
+#X obj 216 78 metro 1;
+#X msg 228 33 loadbang;
+#X obj 209 21 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 190 135 + 1;
+#X obj 190 156 * 25;
+#X obj 115 300 s \$0_h1;
+#X obj 68 315 s \$0_v1;
+#X obj 232 301 s \$0_h2;
+#X obj 116 330 s \$0_h3;
+#X obj 234 330 s \$0_h4;
+#X obj 114 366 s \$0_h5;
+#X obj 238 364 s \$0_h6;
+#X obj 173 317 s \$0_v2;
+#X obj 292 318 s \$0_v3;
+#X obj 65 346 s \$0_v4;
+#X obj 170 348 s \$0_v5;
+#X obj 289 349 s \$0_v6;
+#X obj 249 188 - 50;
+#X obj 250 208 abs;
+#X connect 0 0 2 0;
+#X connect 1 0 0 0;
+#X connect 2 0 6 0;
+#X connect 3 0 2 0;
+#X connect 4 0 3 0;
+#X connect 5 0 3 0;
+#X connect 6 0 7 0;
+#X connect 7 0 20 0;
+#X connect 7 0 8 0;
+#X connect 7 0 17 0;
+#X connect 7 0 13 0;
+#X connect 7 0 12 0;
+#X connect 7 0 19 0;
+#X connect 7 0 15 0;
+#X connect 20 0 21 0;
+#X connect 21 0 10 0;
+#X connect 21 0 9 0;
+#X connect 21 0 16 0;
+#X connect 21 0 14 0;
+#X connect 21 0 11 0;
+#X connect 21 0 18 0;
+#X restore 193 348 pd sliders1;
+#X obj 127 94 cnv 15 200 150 empty empty empty 20 12 0 14 -191407 -66577
+0;
+#X obj 169 108 hsl 50 8 1 50 0 0 \$0_nothing \$0_h1 empty -2 -8 0 10
+-1 -262144 -1 0 1;
+#X obj 169 163 hsl 50 8 1 50 0 0 \$0_nothing \$0_h3 empty -2 -8 0 10
+-1 -262144 -1 4863 1;
+#X obj 156 114 vsl 8 50 1 50 0 0 \$0_nothing \$0_v1 empty 0 -9 0 10
+-1 -262144 -1 4863 1;
+#X obj 221 114 vsl 8 50 1 50 0 0 \$0_nothing \$0_v2 empty 0 -9 0 10
+-1 -262144 -1 0 1;
+#X obj 169 219 hsl 50 8 1 50 0 0 \$0_nothing \$0_h5 empty -2 -8 0 10
+-1 -262144 -1 0 1;
+#X obj 156 170 vsl 8 50 1 50 0 0 \$0_nothing \$0_v4 empty 0 -9 0 10
+-1 -262144 -1 0 1;
+#X obj 221 170 vsl 8 50 1 50 0 0 \$0_nothing \$0_v5 empty 0 -9 0 10
+-1 -262144 -1 4863 1;
+#X obj 233 108 hsl 50 8 1 50 0 0 \$0_nothing \$0_h2 empty -2 -8 0 10
+-1 -262144 -1 4863 1;
+#X obj 233 163 hsl 50 8 1 50 0 0 \$0_nothing \$0_h4 empty -2 -8 0 10
+-1 -262144 -1 0 1;
+#X obj 286 114 vsl 8 50 1 50 0 0 \$0_nothing \$0_v3 empty 0 -9 0 10
+-1 -262144 -1 4863 1;
+#X obj 233 219 hsl 50 8 1 50 0 0 \$0_nothing \$0_h6 empty -2 -8 0 10
+-1 -262144 -1 4863 1;
+#X obj 286 170 vsl 8 50 1 50 0 0 \$0_nothing \$0_v6 empty 0 -9 0 10
+-1 -262144 -1 0 1;
