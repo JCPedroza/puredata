@@ -1,0 +1,92 @@
+#N canvas 147 22 1109 751 10;
+#X obj 2 -115 cnv 15 1090 730 empty empty empty 20 12 0 14 -1 -66577
+0;
+#X obj 508 -107 hsl 128 15 0 2 0 0 \$0_freq empty frequency 10 8 0
+10 -99865 -262144 -262144 2900 1;
+#N canvas 614 183 498 368 Waves 0;
+#X obj 68 24 phasor~;
+#X obj 195 101 >~ 0.5;
+#X obj 195 126 *~ 2;
+#X obj 194 150 -~ 1;
+#X obj 369 32 metro 1;
+#X obj 369 9 loadbang;
+#X obj 347 10 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 369 54 s \$0_metro;
+#X obj 68 2 r \$0_freq;
+#X obj 106 198 snapshot~;
+#X obj 113 176 r \$0_metro;
+#X obj 50 101 *~ -1;
+#X obj 50 129 +~ 1;
+#X obj 25 159 min~;
+#X obj 25 186 *~ 4;
+#X obj 25 211 -~ 1;
+#X obj 335 41 pi;
+#X obj 335 62 * 2;
+#X obj 335 84 value twoPi;
+#X obj 32 74 r~ saw;
+#X obj 103 87 r~ saw;
+#X obj 193 74 r~ saw;
+#X obj 300 135 r~ saw;
+#X obj 68 46 s~ saw;
+#X obj 39 255 snapshot~;
+#X obj 39 232 r \$0_metro;
+#X obj 198 199 snapshot~;
+#X obj 207 175 r \$0_metro;
+#X obj 304 202 snapshot~;
+#X obj 313 178 r \$0_metro;
+#X obj 299 156 expr~ cos($v1 * twoPi) * (-1);
+#X obj 105 115 *~ 2;
+#X obj 108 146 -~ 1;
+#X obj 304 225 s \$0_sin;
+#X obj 198 224 s \$0_sqr;
+#X obj 114 224 s \$0_saw;
+#X obj 40 280 s \$0_tri;
+#X connect 0 0 23 0;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 3 0 26 0;
+#X connect 4 0 7 0;
+#X connect 5 0 4 0;
+#X connect 5 0 16 0;
+#X connect 6 0 4 0;
+#X connect 8 0 0 0;
+#X connect 9 0 35 0;
+#X connect 10 0 9 0;
+#X connect 11 0 12 0;
+#X connect 12 0 13 1;
+#X connect 13 0 14 0;
+#X connect 14 0 15 0;
+#X connect 15 0 24 0;
+#X connect 16 0 17 0;
+#X connect 17 0 18 0;
+#X connect 19 0 11 0;
+#X connect 19 0 13 0;
+#X connect 20 0 31 0;
+#X connect 21 0 1 0;
+#X connect 22 0 30 0;
+#X connect 24 0 36 0;
+#X connect 25 0 24 0;
+#X connect 26 0 34 0;
+#X connect 27 0 26 0;
+#X connect 28 0 33 0;
+#X connect 29 0 28 0;
+#X connect 30 0 28 0;
+#X connect 31 0 32 0;
+#X connect 32 0 9 0;
+#X restore 544 616 pd Waves;
+#X obj 263 -38 hsl 800 150 -1 1 0 0 empty \$0_sin empty -2 -8 0 10
+-1 -262144 -1 489 1;
+#X obj 263 123 hsl 800 150 -1 1 0 0 empty \$0_tri empty -2 -8 0 10
+-1 -262144 -1 3983 1;
+#X obj 262 281 hsl 800 150 -1 1 0 0 empty \$0_sqr empty -2 -8 0 10
+-1 -262144 -1 79900 1;
+#X obj 262 440 hsl 800 150 -1 1 0 0 empty \$0_saw empty -2 -8 0 10
+-1 -262144 -1 77909 1;
+#X obj 18 19 cnv 15 100 60 empty empty Sin 0 0 0 110 -1 -262144 0;
+#X obj 16 179 cnv 15 100 60 empty empty Tri 0 0 0 110 -1 -262144 0
+;
+#X obj 16 346 cnv 15 100 60 empty empty Sqr 0 0 0 110 -1 -262144 0
+;
+#X obj 15 509 cnv 15 100 60 empty empty Saw 0 0 0 110 -1 -262144 0
+;

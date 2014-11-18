@@ -1,0 +1,78 @@
+#N canvas 44 23 1213 739 10;
+#X obj -12 3 cnv 15 1200 730 empty empty empty 20 12 0 14 -1 -66577
+0;
+#N canvas 33 205 471 403 AMyFM 0;
+#X obj 193 219 osc~;
+#X obj 205 351 s \$0_wave;
+#X obj 217 134 r \$0_freq;
+#X obj 204 321 snapshot~;
+#X obj 54 -5 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 76 -6 loadbang;
+#X obj 129 131 osc~;
+#X obj 109 102 r \$0_fmfreq;
+#X obj 194 103 r \$0_fmamt;
+#X obj 160 156 *~;
+#X obj 193 192 +~;
+#X obj 303 68 r \$0_amfreq;
+#X obj 347 112 r \$0_amamt;
+#X obj 302 90 osc~;
+#X obj 302 113 *~ 0.5;
+#X obj 301 143 *~;
+#X obj 302 165 +~ 0.5;
+#X obj 209 254 *~;
+#X obj 221 296 r \$0_metro;
+#X obj 25 62 s \$0_metro;
+#X obj 324 221 snapshot~;
+#X obj 324 246 s \$0_amwave;
+#X obj 76 214 snapshot~;
+#X obj 76 239 s \$0_fmwave;
+#X obj 26 39 metro 1;
+#X obj 55 175 r \$0_metro;
+#X obj 340 194 r \$0_metro;
+#X connect 0 0 17 0;
+#X connect 2 0 10 1;
+#X connect 3 0 1 0;
+#X connect 4 0 24 0;
+#X connect 5 0 24 0;
+#X connect 6 0 9 0;
+#X connect 7 0 6 0;
+#X connect 8 0 9 1;
+#X connect 9 0 10 0;
+#X connect 9 0 22 0;
+#X connect 10 0 0 0;
+#X connect 11 0 13 0;
+#X connect 12 0 15 1;
+#X connect 13 0 14 0;
+#X connect 14 0 15 0;
+#X connect 15 0 16 0;
+#X connect 16 0 17 1;
+#X connect 16 0 20 0;
+#X connect 17 0 3 0;
+#X connect 18 0 3 0;
+#X connect 20 0 21 0;
+#X connect 22 0 23 0;
+#X connect 24 0 19 0;
+#X connect 25 0 22 0;
+#X connect 26 0 20 0;
+#X restore 15 12 pd AMyFM;
+#X obj 170 71 hsl 1000 210 -1 1 0 0 \$0_NOTHING \$0_wave empty -2 -8
+0 10 -1 -262144 -1 61327 1;
+#X obj 346 17 hsl 128 15 0 1 0 0 \$0_freq empty freq 10 8 0 10 -99865
+-262144 -262144 7800 1;
+#X obj 492 17 hsl 128 15 0 1 0 0 \$0_fmfreq empty fm_freq 10 8 0 10
+-99865 -262144 -262144 1900 1;
+#X obj 492 39 hsl 128 15 0 1 0 0 \$0_fmamt empty fm_amt 10 8 0 10 -99865
+-262144 -262144 12700 1;
+#X obj 649 18 hsl 128 15 0 1 0 0 \$0_amfreq empty am_freq 10 8 0 10
+-99865 -262144 -262144 3400 1;
+#X obj 649 40 hsl 128 15 0 1 0 0 \$0_amamt empty am_amt 10 8 0 10 -99865
+-262144 -262144 12700 1;
+#X obj 168 288 hsl 1000 210 -1 1 0 0 \$0_NOTHING \$0_fmwave empty -2
+-8 0 10 -1 -262144 -1 26639 1;
+#X obj 168 507 hsl 1000 210 0 1 0 0 \$0_NOTHING \$0_amwave empty -2
+-8 0 10 -1 -262144 -1 99797 1;
+#X obj -6 373 cnv 15 100 60 empty empty FM 20 12 0 120 -1 -262144 0
+;
+#X obj -14 589 cnv 15 100 60 empty empty AM 20 12 0 120 -1 -262144
+0;
