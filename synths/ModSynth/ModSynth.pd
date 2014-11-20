@@ -1,4 +1,4 @@
-#N canvas 67 22 698 708 10;
+#N canvas 140 46 698 708 10;
 #N canvas 765 490 450 300 ModSynth 0;
 #N canvas 779 359 202 204 Amp 0;
 #X obj 47 23 inlet~;
@@ -968,23 +968,23 @@ time);
 #X restore 12 9 pd init;
 #X restore 72 8 pd presets;
 #X connect 2 0 0 0;
-#X restore 575 531 pd ModSynth;
+#X restore 583 616 pd ModSynth;
 #X obj 303 5 hsl 128 15 0 127 0 0 \$0_volumeX \$0_volumeR volume 10
-8 0 10 -262144 -1 -1 4000 1;
+8 0 10 -262144 -1 -1 0 1;
 #X obj 51 248 hsl 128 17 0 127 0 0 \$0_PMamtX empty PM_amt 10 9 0 10
--262144 -1 -1 400 1;
+-262144 -1 -1 1400 1;
 #X obj 187 248 hradio 15 1 0 3 \$0_PMamtmulti empty empty 0 -8 0 10
 -262144 -1 -1 0;
 #X obj 237 264 nbx 6 14 -1e+37 1e+37 0 0 \$0_NoThInG \$0_PMamtnum amt
-20 20 0 10 -262144 -1 -1 0.314961 256;
+20 20 0 10 -262144 -1 -1 1.10236 256;
 #X obj 21 222 vradio 15 1 0 5 \$0_PMratio \$0_PMratioR ratio -5 -8
-0 10 -262144 -1 -1 0;
+0 10 -262144 -1 -1 1;
 #X obj 9 301 nbx 4 14 -1e+37 1e+37 0 0 \$0_NoThInG \$0_PMmultinum empty
-0 -8 0 10 -262144 -1 -1 0.25 256;
+0 -8 0 10 -262144 -1 -1 0.5 256;
 #X obj 187 226 hradio 15 1 0 3 \$0_PMfreqoffsetmulti empty empty 0
 -8 0 10 -262144 -1 -1 0;
 #X obj 238 225 nbx 6 14 -1e+37 1e+37 0 0 \$0_NoThInG \$0_PMfreqnum
-freq 16 20 0 10 -262144 -1 -1 50 256;
+freq 16 20 0 10 -262144 -1 -1 82.5 256;
 #X obj 51 273 hsl 128 17 0 127 0 0 \$0_PMamtkbt empty PM_amt_kbt 10
 9 0 10 -262144 -1 -1 0 1;
 #X obj 187 273 hradio 15 1 0 3 \$0_PMamtkbtmulti empty empty 0 -8 0
@@ -994,24 +994,24 @@ freq 16 20 0 10 -262144 -1 -1 50 256;
 10 9 0 10 -262144 -1 -1 6350 1;
 #X obj 110 210 bng 15 250 50 0 \$0_PMfreqoffsetreset empty empty 17
 7 0 10 -262144 -1 -1;
-#X obj 21 337 vradio 15 1 0 5 \$0_AMratio \$0_AMratioR ratio -5 -8
-0 10 -262144 -1 -1 2;
-#X obj 10 416 nbx 4 14 -1e+37 1e+37 0 0 \$0_NoThInG \$0_AMmultinum
-empty 0 -8 0 10 -262144 -1 -1 1 256;
-#X obj 49 365 hsl 128 17 0 127 0 0 \$0_AMamtX empty AM_amt 10 9 0 10
+#X obj 18 367 vradio 15 1 0 5 \$0_AMratio \$0_AMratioR ratio -5 -8
+0 10 -262144 -1 -1 0;
+#X obj 7 446 nbx 4 14 -1e+37 1e+37 0 0 \$0_NoThInG \$0_AMmultinum empty
+0 -8 0 10 -262144 -1 -1 0.25 256;
+#X obj 46 395 hsl 128 17 0 127 0 0 \$0_AMamtX empty AM_amt 10 9 0 10
 -262144 -1 -1 12700 1;
-#X obj 185 377 nbx 6 14 -1e+37 1e+37 0 0 \$0_NoThInG \$0_AMamtnum amt
+#X obj 182 407 nbx 6 14 -1e+37 1e+37 0 0 \$0_NoThInG \$0_AMamtnum amt
 20 20 0 10 -262144 -1 -1 200 256;
-#X obj 184 343 hradio 15 1 0 3 \$0_AMfreqoffsetmulti empty empty 0
+#X obj 181 373 hradio 15 1 0 3 \$0_AMfreqoffsetmulti empty empty 0
 -8 0 10 -262144 -1 -1 0;
-#X obj 235 342 nbx 6 14 -1e+37 1e+37 0 0 \$0_NoThInG \$0_AMfreqnum
-freq 16 20 0 10 -262144 -1 -1 200 256;
-#X obj 49 390 hsl 128 17 0 127 0 0 \$0_AMamtkbt empty AM_amt_kbt 10
+#X obj 232 372 nbx 6 14 -1e+37 1e+37 0 0 \$0_NoThInG \$0_AMfreqnum
+freq 16 20 0 10 -262144 -1 -1 41.25 256;
+#X obj 46 420 hsl 128 17 0 127 0 0 \$0_AMamtkbt empty AM_amt_kbt 10
 9 0 10 -262144 -1 -1 0 1;
-#X obj 107 327 bng 15 250 50 0 \$0_AMfreqoffsetreset empty empty 17
+#X obj 104 357 bng 15 250 50 0 \$0_AMfreqoffsetreset empty empty 17
 7 0 10 -262144 -1 -1;
-#X obj 46 342 r \$0_AMoffsettomid;
-#X obj 49 342 hsl 128 17 0 127 0 0 \$0_AMfreqoffset empty AM_freq_offset
+#X obj 43 372 r \$0_AMoffsettomid;
+#X obj 46 372 hsl 128 17 0 127 0 0 \$0_AMfreqoffset empty AM_freq_offset
 10 9 0 10 -262144 -1 -1 6350 1;
 #N canvas 386 151 107 287 CPU 0;
 #X obj 15 164 cputime;
@@ -1033,68 +1033,73 @@ freq 16 20 0 10 -262144 -1 -1 200 256;
 #X connect 7 0 2 0;
 #X restore 9 5 pd CPU;
 #X floatatom 9 27 5 0 0 0 - - -;
-#X obj 49 133 hsl 128 17 0 127 0 0 \$0_FMamtX empty FM_amt 10 9 0 10
--262144 -1 -1 12300 1;
-#X obj 185 133 hradio 15 1 0 3 \$0_FMamtmulti empty empty 0 -8 0 10
--262144 -1 -1 1;
-#X obj 235 149 nbx 6 14 -1e+37 1e+37 0 0 \$0_NoThInG \$0_FMamtnum amt
-20 20 0 10 -262144 -1 -1 968.504 256;
-#X obj 19 107 vradio 15 1 0 5 \$0_FMratio \$0_FMratioR ratio -5 -8
-0 10 -262144 -1 -1 1;
-#X obj 7 186 nbx 4 14 -1e+37 1e+37 0 0 \$0_NoThInG \$0_FMmultinum empty
-0 -8 0 10 -262144 -1 -1 0.5 256;
-#X obj 185 111 hradio 15 1 0 3 \$0_FMfreqoffsetmulti empty empty 0
--8 0 10 -262144 -1 -1 0;
-#X obj 236 110 nbx 6 14 -1e+37 1e+37 0 0 \$0_NoThInG \$0_FMfreqnum
-freq 16 20 0 10 -262144 -1 -1 100 256;
-#X obj 49 158 hsl 128 17 0 127 0 0 \$0_FMamtkbt empty FM_amt_kbt 10
+#X obj 48 104 hsl 128 17 0 127 0 0 \$0_FMamtX empty FM_amt 10 9 0 10
+-262144 -1 -1 11100 1;
+#X obj 184 104 hradio 15 1 0 3 \$0_FMamtmulti empty empty 0 -8 0 10
+-262144 -1 -1 2;
+#X obj 234 120 nbx 6 14 -1e+37 1e+37 0 0 \$0_NoThInG \$0_FMamtnum amt
+20 20 0 10 -262144 -1 -1 8740.16 256;
+#X obj 18 78 vradio 15 1 0 5 \$0_FMratio \$0_FMratioR ratio -5 -8 0
+10 -262144 -1 -1 4;
+#X obj 6 157 nbx 4 14 -1e+37 1e+37 0 0 \$0_NoThInG \$0_FMmultinum empty
+0 -8 0 10 -262144 -1 -1 4 256;
+#X obj 184 82 hradio 15 1 0 3 \$0_FMfreqoffsetmulti empty empty 0 -8
+0 10 -262144 -1 -1 0;
+#X obj 235 81 nbx 6 14 -1e+37 1e+37 0 0 \$0_NoThInG \$0_FMfreqnum freq
+16 20 0 10 -262144 -1 -1 660 256;
+#X obj 48 129 hsl 128 17 0 127 0 0 \$0_FMamtkbt empty FM_amt_kbt 10
 9 0 10 -262144 -1 -1 0 1;
-#X obj 185 158 hradio 15 1 0 3 \$0_FMamtkbtmulti empty empty 0 -8 0
+#X obj 184 129 hradio 15 1 0 3 \$0_FMamtkbtmulti empty empty 0 -8 0
 10 -262144 -1 -1 2;
-#X obj 108 94 bng 15 250 50 0 \$0_FMfreqoffsetreset empty empty 17
+#X obj 107 65 bng 15 250 50 0 \$0_FMfreqoffsetreset empty empty 17
 7 0 10 -262144 -1 -1;
-#X obj 47 111 r \$0_FMoffsettomid;
-#X obj 50 111 hsl 128 17 0 127 0 0 \$0_FMfreqoffset empty FM_freq_offset
+#X obj 46 82 r \$0_FMoffsettomid;
+#X obj 49 82 hsl 128 17 0 127 0 0 \$0_FMfreqoffset empty FM_freq_offset
 10 9 0 10 -262144 -1 -1 6350 1;
-#X obj 329 110 hsl 128 15 1 128 1 0 \$0_filtercutoffX \$0_filtercutoffR
-cutoff 10 8 0 10 -262144 -1 -1 5000 1;
-#X obj 329 131 hsl 128 15 0 127 0 0 \$0_filterkbt empty kbt 10 8 0
+#X obj 328 81 hsl 128 15 1 128 1 0 \$0_filtercutoffX \$0_filtercutoffR
+cutoff 10 8 0 10 -262144 -1 -1 6800 1;
+#X obj 328 102 hsl 128 15 0 127 0 0 \$0_filterkbt empty kbt 10 8 0
 10 -262144 -1 -1 0 1;
-#X obj 329 152 hsl 128 15 0 127 0 0 \$0_filterqX empty resonance 10
-8 0 10 -262144 -1 -1 6400 1;
-#X obj 466 110 nbx 5 14 -1e+37 1e+37 0 0 \$0_NoThInG \$0_filtercutoffnum
-empty 0 -8 0 10 -262144 -1 -1 906.262 256;
-#X obj 366 589 s \$0_freq;
-#X floatatom 366 568 5 0 0 0 - - -;
-#X obj 443 590 s \$0_trigger;
-#X obj 387 483 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#X obj 328 123 hsl 128 15 0 127 0 0 \$0_filterqX empty resonance 10
+8 0 10 -262144 -1 -1 0 1;
+#X obj 465 81 nbx 5 14 -1e+37 1e+37 0 0 \$0_NoThInG \$0_filtercutoffnum
+empty 0 -8 0 10 -262144 -1 -1 1958.42 256;
+#X obj 380 656 s \$0_freq;
+#X floatatom 380 635 5 0 0 0 - - -;
+#X obj 457 657 s \$0_trigger;
+#X obj 401 550 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X obj 329 217 hsl 128 15 0 127 0 0 \$0_ampenvattX empty attack 10
-8 0 10 -262144 -1 -1 100 1;
-#X obj 329 236 hsl 128 15 0 127 0 0 \$0_ampenvdcyX empty decay 10 8
-0 10 -262144 -1 -1 0 1;
-#X obj 329 256 hsl 128 15 0 127 0 0 \$0_ampenvsustX empty sustain_time
+#X obj 325 358 hsl 128 15 0 127 0 0 \$0_ampenvattX empty attack 10
+8 0 10 -262144 -1 -1 600 1;
+#X obj 325 377 hsl 128 15 0 127 0 0 \$0_ampenvdcyX empty decay 10 8
+0 10 -262144 -1 -1 1200 1;
+#X obj 325 397 hsl 128 15 0 127 0 0 \$0_ampenvsustX empty sustain_time
 10 8 0 10 -262144 -1 -1 12700 1;
-#X obj 329 276 hsl 128 15 0 127 0 0 \$0_ampenvsuslX empty sustain_level
+#X obj 325 417 hsl 128 15 0 127 0 0 \$0_ampenvsuslX empty sustain_level
 10 8 0 10 -262144 -1 -1 12700 1;
-#X obj 329 295 hsl 128 15 0 127 0 0 \$0_ampenvrelX empty release 10
-8 0 10 -262144 -1 -1 100 1;
-#X obj 387 524 metro 2000;
-#X obj 324 343 hsl 128 15 0 127 0 0 \$0_filtenvattX empty attack 10
+#X obj 325 436 hsl 128 15 0 127 0 0 \$0_ampenvrelX empty release 10
+8 0 10 -262144 -1 -1 800 1;
+#X obj 327 209 hsl 128 15 0 127 0 0 \$0_filtenvattX empty attack 10
 8 0 10 -262144 -1 -1 200 1;
-#X obj 324 362 hsl 128 15 0 127 0 0 \$0_filtenvdcyX empty decay 10
-8 0 10 -262144 -1 -1 3800 1;
-#X obj 324 382 hsl 128 15 0 127 0 0 \$0_filtenvsustX empty sustain_time
-10 8 0 10 -262144 -1 -1 800 1;
-#X obj 324 402 hsl 128 15 0 127 0 0 \$0_filtenvsuslX empty sustain_level
-10 8 0 10 -262144 -1 -1 12700 1;
-#X obj 324 421 hsl 128 15 0 127 0 0 \$0_filtenvrelX empty release 10
-8 0 10 -262144 -1 -1 2900 1;
+#X obj 327 228 hsl 128 15 0 127 0 0 \$0_filtenvdcyX empty decay 10
+8 0 10 -262144 -1 -1 7000 1;
+#X obj 327 248 hsl 128 15 0 127 0 0 \$0_filtenvsustX empty sustain_time
+10 8 0 10 -262144 -1 -1 0 1;
+#X obj 327 268 hsl 128 15 0 127 0 0 \$0_filtenvsuslX empty sustain_level
+10 8 0 10 -262144 -1 -1 0 1;
+#X obj 327 287 hsl 128 15 0 127 0 0 \$0_filtenvrelX empty release 10
+8 0 10 -262144 -1 -1 1000 1;
+#X obj 401 591 metro 250;
+#X text 19 590 todo: phase controls in modulators;
+#X text 19 602 todo: add phase retrigger to modulators and carrier
+;
+#X text 21 618 todo: kbt to both envelopes;
+#X text 22 631 todo: get rid of unnecessary num2s;
 #X connect 11 0 12 0;
 #X connect 22 0 23 0;
 #X connect 24 0 25 0;
 #X connect 36 0 37 0;
 #X connect 43 0 42 0;
-#X connect 45 0 51 0;
-#X connect 51 0 43 0;
-#X connect 51 0 44 0;
+#X connect 45 0 56 0;
+#X connect 56 0 43 0;
+#X connect 56 0 44 0;
