@@ -34,12 +34,12 @@
 #X connect 3 0 4 1;
 #X connect 4 0 1 0;
 #X restore 169 126 pd \$0_BPF;
-#N canvas 842 465 278 222 \$0_Distortion 1;
+#N canvas 842 465 278 222 \$0_Distortion 0;
 #X obj 24 36 inlet~;
 #X obj 54 180 outlet~;
 #X obj 82 35 r distamt;
 #X obj 64 148 dist~ 1;
-#N canvas 513 512 269 252 distrng 1;
+#N canvas 513 512 269 252 distrng 0;
 #X obj 73 9 r \$0_trigger;
 #X obj 94 182 *;
 #X obj 86 218 outlet;
