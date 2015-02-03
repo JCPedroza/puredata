@@ -1,15 +1,13 @@
-#N canvas 41 48 838 391 10;
-#X floatatom 412 221 5 0 0 0 - - -;
+#N canvas 45 34 838 391 10;
 #X obj 230 44 s BPfreq;
 #X obj 397 41 s BPq;
 #X floatatom 397 18 5 0 0 0 - - -;
-#X obj 423 245 s coarse;
 #X obj 237 17 hsl 128 15 0 20000 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 6800 1;
+-1 -1 0 1;
 #X obj 275 103 hsl 128 15 0 127 0 0 panX paninput pan 8 8 0 10 -262144
 -1 -1 6400 1;
 #X obj 274 150 hsl 128 15 0 127 0 0 ampX ampinput volume 8 8 0 10 -262144
--1 -1 10300 1;
+-1 -1 3000 1;
 #N canvas 656 359 135 252 cpu 0;
 #X obj 23 220 outlet;
 #X obj 23 130 cputime;
@@ -29,23 +27,25 @@
 #X connect 7 0 6 0;
 #X restore 727 7 pd cpu;
 #X floatatom 727 33 5 0 0 0 - - -;
-#N canvas 329 403 255 240 select 0;
+#N canvas 359 474 255 240 select 0;
 #X obj 39 43 inlet trigger;
 #X obj 67 109 f;
 #X obj 67 135 + 1;
 #X msg 144 51 0;
 #X obj 143 23 loadbang;
 #X obj 67 183 s selection;
-#X obj 68 159 mod 2;
-#X obj 39 69 metro 1000;
+#X floatatom 31 201 5 0 0 0 - - -;
+#X obj 39 69 metro 3000;
+#X obj 67 159 mod 15;
 #X connect 0 0 7 0;
 #X connect 1 0 2 0;
 #X connect 2 0 1 1;
-#X connect 2 0 6 0;
+#X connect 2 0 8 0;
 #X connect 3 0 1 1;
 #X connect 4 0 3 0;
-#X connect 6 0 5 0;
 #X connect 7 0 1 0;
+#X connect 8 0 5 0;
+#X connect 8 0 6 0;
 #X restore 582 278 pd select;
 #X obj 583 248 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
@@ -58,8 +58,8 @@
 #X floatatom 74 18 5 0 0 0 - - -;
 #X obj 332 87 bng 15 250 50 0 panresetX _nothing empty 17 7 0 10 -262144
 -1 -1;
-#N canvas 897 42 450 300 CLODrone 1;
-#N canvas 734 352 273 126 controlvalues 0;
+#N canvas 551 389 450 300 CLODrone 1;
+#N canvas 730 353 273 126 controlvalues 0;
 #N canvas 850 168 252 94 pan 0;
 #X obj 6 10 r panvarianceX;
 #X obj 7 58 s panvariance;
@@ -261,7 +261,7 @@
 #X restore 73 12 pd fmcoarse;
 #X restore 207 15 pd fm;
 #X restore 9 12 pd controlvalues;
-#N canvas 401 425 450 300 defaults 0;
+#N canvas 459 431 305 172 defaults 0;
 #N canvas 327 626 198 121 pan 0;
 #X obj 15 12 loadbang;
 #X msg 15 45 127;
@@ -271,93 +271,130 @@
 #X connect 0 0 1 0;
 #X connect 0 0 3 0;
 #X connect 1 0 4 0;
+#X connect 3 0 2 0;
 #X restore 17 18 pd pan;
 #N canvas 743 462 222 108 amp 0;
 #X obj 14 -15 loadbang;
-#X msg 15 21 100;
 #X obj 15 44 s ampinput;
-#X msg 89 21 0;
 #X obj 88 45 s ampvarianceinput;
-#X connect 0 0 1 0;
+#X msg 14 21 30;
+#X msg 87 22 30;
 #X connect 0 0 3 0;
-#X connect 1 0 2 0;
-#X connect 3 0 4 0;
+#X connect 0 0 4 0;
+#X connect 3 0 1 0;
+#X connect 4 0 2 0;
 #X restore 66 18 pd amp;
 #N canvas 650 317 395 184 env 0;
 #X obj 17 14 loadbang;
 #X obj 14 107 s attackinput;
-#X msg 16 79 64;
 #X obj 53 76 s decayinput;
 #X msg 56 49 0;
 #X obj 114 131 s sustainlevelinput;
 #X msg 114 103 127;
 #X obj 162 77 s sustaintimeinput;
-#X msg 163 48 115;
 #X obj 250 133 s releaseinput;
 #X msg 249 107 125;
-#X connect 0 0 2 0;
-#X connect 0 0 4 0;
-#X connect 0 0 6 0;
-#X connect 0 0 8 0;
+#X msg 16 79 103;
+#X msg 163 48 75;
+#X connect 0 0 9 0;
+#X connect 0 0 3 0;
+#X connect 0 0 5 0;
 #X connect 0 0 10 0;
-#X connect 2 0 1 0;
-#X connect 4 0 3 0;
-#X connect 6 0 5 0;
+#X connect 0 0 8 0;
+#X connect 3 0 2 0;
+#X connect 5 0 4 0;
 #X connect 8 0 7 0;
-#X connect 10 0 9 0;
+#X connect 9 0 1 0;
+#X connect 10 0 6 0;
 #X restore 118 20 pd env;
-#N canvas 533 387 437 189 fm 0;
+#N canvas 434 390 437 189 fm 0;
 #X obj 15 12 loadbang;
 #X obj 15 121 s fmcoarseinput;
-#X msg 14 93 7;
 #X obj 54 88 s fmamtinput;
 #X msg 53 61 127;
 #X obj 120 146 s fmamtmulinput;
 #X msg 118 116 1;
 #X obj 150 86 s fmamtvarianceinput;
-#X msg 153 56 58;
 #X obj 242 143 s fmcoarsevarianceinput;
-#X msg 240 114 0;
-#X connect 0 0 2 0;
-#X connect 0 0 4 0;
-#X connect 0 0 6 0;
+#X msg 14 93 5;
+#X msg 153 56 127;
+#X msg 240 114 127;
 #X connect 0 0 8 0;
+#X connect 0 0 3 0;
+#X connect 0 0 5 0;
+#X connect 0 0 9 0;
 #X connect 0 0 10 0;
-#X connect 2 0 1 0;
-#X connect 4 0 3 0;
-#X connect 6 0 5 0;
-#X connect 8 0 7 0;
-#X connect 10 0 9 0;
+#X connect 3 0 2 0;
+#X connect 5 0 4 0;
+#X connect 8 0 1 0;
+#X connect 9 0 6 0;
+#X connect 10 0 7 0;
 #X restore 169 22 pd fm;
+#N canvas 456 358 302 152 dist 0;
+#X obj 19 17 loadbang;
+#X msg 74 55 20;
+#X msg 10 55 20;
+#X obj 13 90 s distamtinput;
+#X obj 135 91 s distvarianceinput;
+#X connect 0 0 2 0;
+#X connect 0 0 1 0;
+#X connect 1 0 4 0;
+#X connect 2 0 3 0;
+#X restore 213 23 pd dist;
 #X restore 120 13 pd defaults;
-#X obj 165 174 drone 0;
+#X obj 297 136 drone 14;
+#N canvas 742 469 370 226 dronereception 0;
+#X obj 125 44 catch~ ML;
+#X obj 195 45 catch~ MR;
+#X obj 166 156 dac~;
+#X obj 125 92 *~ 0.2;
+#X obj 197 92 *~ 0.2;
+#X connect 0 0 3 0;
+#X connect 1 0 4 0;
+#X connect 3 0 2 0;
+#X connect 4 0 2 1;
+#X restore 203 212 pd dronereception;
+#X obj 34 80 drone 0;
+#X obj 99 83 drone 1;
+#X obj 158 81 drone 2;
+#X obj 226 84 drone 3;
+#X obj 289 84 drone 4;
+#X obj 35 111 drone 5;
+#X obj 98 110 drone 6;
+#X obj 161 110 drone 7;
+#X obj 228 111 drone 8;
+#X obj 292 110 drone 9;
+#X obj 40 137 drone 10;
+#X obj 103 136 drone 11;
+#X obj 166 135 drone 12;
+#X obj 233 137 drone 13;
 #X restore 686 294 pd CLODrone;
 #X obj 275 172 hsl 128 15 0 127 0 0 ampvarianceX ampvarianceinput volume_variance
-8 8 0 10 -262144 -1 -1 3500 1;
+8 8 0 10 -262144 -1 -1 3000 1;
 #X obj 22 320 hsl 128 15 0 127 0 0 distamtX distamtinput distortion
-8 8 0 10 -262144 -1 -1 9700 1;
+8 8 0 10 -262144 -1 -1 2000 1;
 #X obj 21 343 hsl 128 15 0 127 0 0 distvarianceX distvarianceinput
-distortion_variance 8 8 0 10 -262144 -1 -1 9900 1;
+distortion_variance 8 8 0 10 -262144 -1 -1 2000 1;
 #X msg 33 97 440;
 #X msg 83 98 523.251;
 #X msg 143 98 659.255;
 #X obj 91 72 loadbang;
 #X obj 503 73 hsl 128 15 0 127 0 0 attackX attackinput attack 8 8 0
-10 -262144 -1 -1 6400 1;
+10 -262144 -1 -1 10300 1;
 #X obj 504 95 hsl 128 15 0 127 0 0 decayX decayinput decay 8 8 0 10
 -262144 -1 -1 0 1;
 #X obj 505 118 hsl 128 15 0 127 0 0 sustainlevelX sustainlevelinput
 sustain_level 8 8 0 10 -262144 -1 -1 12700 1;
 #X obj 503 142 hsl 128 15 0 127 0 0 sustaintimeX sustaintimeinput sustain_time
-8 8 0 10 -262144 -1 -1 11500 1;
+8 8 0 10 -262144 -1 -1 7500 1;
 #X obj 504 164 hsl 128 15 0 127 0 0 releaseX releaseinput release 8
 8 0 10 -262144 -1 -1 12500 1;
 #X obj 639 73 nbx 4 14 -1e+37 1e+37 0 0 __nothing attnum empty 0 -8
-0 10 -262144 -1 -1 6.03937 256;
+0 10 -262144 -1 -1 9.11024 256;
 #X obj 640 96 nbx 4 14 -1e+37 1e+37 0 0 __nothing dcynum empty 0 -8
 0 10 -262144 -1 -1 0 256;
 #X obj 639 142 nbx 4 14 -1e+37 1e+37 0 0 __nothing sutnum empty 0 -8
-0 10 -262144 -1 -1 10.0551 256;
+0 10 -262144 -1 -1 6.90551 256;
 #X obj 639 164 nbx 4 14 -1e+37 1e+37 0 0 __nothing relnum empty 0 -8
 0 10 -262144 -1 -1 60.0551 256;
 #X obj 27 217 hsl 128 15 0 127 0 0 fmamtX fmamtinput FM_amount 8 8
@@ -367,22 +404,21 @@ sustain_level 8 8 0 10 -262144 -1 -1 12700 1;
 #X obj 212 217 nbx 5 14 -1e+37 1e+37 0 0 __nothing fmamtnum empty 0
 -8 0 10 -262144 -1 -1 10000 256;
 #X obj 53 194 hradio 15 1 0 10 fmcoarseX fmcoarseinput empty 0 -8 0
-10 -262144 -1 -1 7;
+10 -262144 -1 -1 5;
 #X obj 211 195 nbx 4 14 -1e+37 1e+37 0 0 __nothing coarsenum empty
-0 -8 0 10 -262144 -1 -1 6 256;
+0 -8 0 10 -262144 -1 -1 4 256;
 #X obj 27 240 hsl 128 15 0 127 0 0 fmamtvarianceX fmamtvarianceinput
-FM_amount_variance 8 8 0 10 -262144 -1 -1 5800 1;
+FM_amount_variance 8 8 0 10 -262144 -1 -1 12700 1;
 #X obj 27 262 hsl 128 15 0 127 0 0 fmcoarsevarianceX fmcoarsevarianceinput
-FM_coarse_variance 8 8 0 10 -262144 -1 -1 0 1;
-#X connect 0 0 4 0;
-#X connect 3 0 2 0;
-#X connect 5 0 1 0;
-#X connect 8 0 9 0;
-#X connect 11 0 10 0;
-#X connect 17 0 16 0;
+FM_coarse_variance 8 8 0 10 -262144 -1 -1 12700 1;
+#X connect 2 0 1 0;
+#X connect 3 0 0 0;
+#X connect 6 0 7 0;
+#X connect 9 0 8 0;
+#X connect 15 0 14 0;
+#X connect 21 0 11 0;
+#X connect 22 0 12 0;
 #X connect 23 0 13 0;
-#X connect 24 0 14 0;
-#X connect 25 0 15 0;
-#X connect 26 0 23 0;
-#X connect 26 0 24 0;
-#X connect 26 0 25 0;
+#X connect 24 0 21 0;
+#X connect 24 0 22 0;
+#X connect 24 0 23 0;
