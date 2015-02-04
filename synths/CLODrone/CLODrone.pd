@@ -1,12 +1,12 @@
-#N canvas 45 34 838 391 10;
+#N canvas 24 34 838 391 10;
 #X obj 230 44 s BPfreq;
 #X obj 397 41 s BPq;
 #X floatatom 397 18 5 0 0 0 - - -;
 #X obj 237 17 hsl 128 15 0 20000 0 0 empty empty empty -2 -8 0 10 -262144
 -1 -1 0 1;
-#X obj 275 103 hsl 128 15 0 127 0 0 panX paninput pan 8 8 0 10 -262144
+#X obj 327 95 hsl 128 15 0 127 0 0 panX paninput pan 8 8 0 10 -262144
 -1 -1 6400 1;
-#X obj 274 150 hsl 128 15 0 127 0 0 ampX ampinput volume 8 8 0 10 -262144
+#X obj 327 116 hsl 128 15 0 127 0 0 ampX ampinput volume 8 8 0 10 -262144
 -1 -1 3000 1;
 #N canvas 656 359 135 252 cpu 0;
 #X obj 23 220 outlet;
@@ -27,38 +27,18 @@
 #X connect 7 0 6 0;
 #X restore 727 7 pd cpu;
 #X floatatom 727 33 5 0 0 0 - - -;
-#N canvas 359 474 255 240 select 0;
-#X obj 39 43 inlet trigger;
-#X obj 67 109 f;
-#X obj 67 135 + 1;
-#X msg 144 51 0;
-#X obj 143 23 loadbang;
-#X obj 67 183 s selection;
-#X floatatom 31 201 5 0 0 0 - - -;
-#X obj 39 69 metro 3000;
-#X obj 67 159 mod 15;
-#X connect 0 0 7 0;
-#X connect 1 0 2 0;
-#X connect 2 0 1 1;
-#X connect 2 0 8 0;
-#X connect 3 0 1 1;
-#X connect 4 0 3 0;
-#X connect 7 0 1 0;
-#X connect 8 0 5 0;
-#X connect 8 0 6 0;
-#X restore 582 278 pd select;
-#X obj 583 248 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
--1 -1;
-#X obj 275 125 hsl 128 15 0 127 0 0 panvarianceX panvarianceinput pan_variance
+#X obj 601 280 bng 15 250 50 0 metrotrigger empty start_metronome 17
+7 0 10 -262144 -1 -1;
+#X obj 327 138 hsl 128 15 0 127 0 0 panvarianceX panvarianceinput pan_variance
 8 8 0 10 -262144 -1 -1 12700 1;
 #X obj 33 126 s freq1;
 #X obj 86 127 s freq2;
 #X obj 139 126 s freq3;
 #X obj 74 43 s octaves;
 #X floatatom 74 18 5 0 0 0 - - -;
-#X obj 332 87 bng 15 250 50 0 panresetX _nothing empty 17 7 0 10 -262144
+#X obj 384 79 bng 15 250 50 0 panresetX _nothing empty 17 7 0 10 -262144
 -1 -1;
-#N canvas 551 389 450 300 CLODrone 1;
+#N canvas 360 427 450 300 CLODrone 1;
 #N canvas 730 353 273 126 controlvalues 0;
 #N canvas 850 168 252 94 pan 0;
 #X obj 6 10 r panvarianceX;
@@ -260,8 +240,34 @@
 #X connect 17 0 6 10;
 #X restore 73 12 pd fmcoarse;
 #X restore 207 15 pd fm;
-#X restore 9 12 pd controlvalues;
-#N canvas 459 431 305 172 defaults 0;
+#N canvas 855 424 450 300 mods 0;
+#N canvas 368 613 596 127 vibrato 0;
+#X obj 19 14 r vibratodepthX;
+#X obj 18 38 / 127;
+#X obj 20 65 s vibratodepth;
+#X obj 138 14 r vibratofreqX;
+#X obj 138 40 / 127;
+#X obj 139 87 s vibratofreq;
+#X obj 138 61 * 10;
+#X obj 236 15 r vibratodepthvarianceX;
+#X obj 236 47 / 127;
+#X obj 237 81 s vibratodepthvariance;
+#X obj 399 14 r vibratofreqvarianceX;
+#X obj 398 83 s vibratofreqvariance;
+#X obj 400 49 / 127;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 3 0 4 0;
+#X connect 4 0 6 0;
+#X connect 6 0 5 0;
+#X connect 7 0 8 0;
+#X connect 8 0 9 0;
+#X connect 10 0 12 0;
+#X connect 12 0 11 0;
+#X restore 33 24 pd vibrato;
+#X restore 21 44 pd mods;
+#X restore 9 7 pd controlvalues;
+#N canvas 490 464 305 172 defaults 0;
 #N canvas 327 626 198 121 pan 0;
 #X obj 15 12 loadbang;
 #X msg 15 45 127;
@@ -294,8 +300,8 @@
 #X obj 162 77 s sustaintimeinput;
 #X obj 250 133 s releaseinput;
 #X msg 249 107 125;
-#X msg 16 79 103;
-#X msg 163 48 75;
+#X msg 16 78 110;
+#X msg 163 48 120;
 #X connect 0 0 9 0;
 #X connect 0 0 3 0;
 #X connect 0 0 5 0;
@@ -313,22 +319,22 @@
 #X obj 54 88 s fmamtinput;
 #X msg 53 61 127;
 #X obj 120 146 s fmamtmulinput;
-#X msg 118 116 1;
 #X obj 150 86 s fmamtvarianceinput;
 #X obj 242 143 s fmcoarsevarianceinput;
-#X msg 14 93 5;
 #X msg 153 56 127;
 #X msg 240 114 127;
-#X connect 0 0 8 0;
-#X connect 0 0 3 0;
-#X connect 0 0 5 0;
+#X msg 14 93 4;
+#X msg 118 116 0;
 #X connect 0 0 9 0;
+#X connect 0 0 3 0;
 #X connect 0 0 10 0;
+#X connect 0 0 7 0;
+#X connect 0 0 8 0;
 #X connect 3 0 2 0;
-#X connect 5 0 4 0;
-#X connect 8 0 1 0;
-#X connect 9 0 6 0;
-#X connect 10 0 7 0;
+#X connect 7 0 5 0;
+#X connect 8 0 6 0;
+#X connect 9 0 1 0;
+#X connect 10 0 4 0;
 #X restore 169 22 pd fm;
 #N canvas 456 358 302 152 dist 0;
 #X obj 19 17 loadbang;
@@ -341,8 +347,28 @@
 #X connect 1 0 4 0;
 #X connect 2 0 3 0;
 #X restore 213 23 pd dist;
-#X restore 120 13 pd defaults;
-#X obj 297 136 drone 14;
+#N canvas 586 526 450 300 mod 0;
+#N canvas 661 341 418 166 vibrato 0;
+#X obj 9 9 loadbang;
+#X obj 12 108 s vibratodepthinput;
+#X obj 69 80 s vibratofreqinput;
+#X obj 163 109 s vibratodepthvarianceinput;
+#X obj 218 84 s vibratofreqvarianceinput;
+#X msg 24 61 5;
+#X msg 77 52 1;
+#X msg 160 53 5;
+#X msg 231 46 5;
+#X connect 0 0 5 0;
+#X connect 0 0 6 0;
+#X connect 0 0 7 0;
+#X connect 0 0 8 0;
+#X connect 5 0 1 0;
+#X connect 6 0 2 0;
+#X connect 7 0 3 0;
+#X connect 8 0 4 0;
+#X restore 14 22 pd vibrato;
+#X restore 29 49 pd mod;
+#X restore 119 8 pd defaults;
 #N canvas 742 469 370 226 dronereception 0;
 #X obj 125 44 catch~ ML;
 #X obj 195 45 catch~ MR;
@@ -353,8 +379,9 @@
 #X connect 1 0 4 0;
 #X connect 3 0 2 0;
 #X connect 4 0 2 1;
-#X restore 203 212 pd dronereception;
+#X restore 149 258 pd dronereception;
 #X obj 34 80 drone 0;
+#X obj 297 136 drone 14;
 #X obj 99 83 drone 1;
 #X obj 158 81 drone 2;
 #X obj 226 84 drone 3;
@@ -368,8 +395,43 @@
 #X obj 103 136 drone 11;
 #X obj 166 135 drone 12;
 #X obj 233 137 drone 13;
-#X restore 686 294 pd CLODrone;
-#X obj 275 172 hsl 128 15 0 127 0 0 ampvarianceX ampvarianceinput volume_variance
+#X obj 39 163 drone 15;
+#X obj 103 162 drone 16;
+#X obj 165 161 drone 17;
+#X obj 232 163 drone 18;
+#X obj 296 162 drone 19;
+#X obj 36 186 drone 20;
+#X obj 101 184 drone 21;
+#X obj 162 184 drone 22;
+#X obj 230 186 drone 23;
+#X obj 294 185 drone 24;
+#X obj 37 210 drone 25;
+#X obj 102 208 drone 26;
+#X obj 163 207 drone 27;
+#X obj 231 208 drone 28;
+#X obj 295 209 drone 29;
+#N canvas 253 485 255 240 select 0;
+#X obj 67 109 f;
+#X obj 67 135 + 1;
+#X msg 144 51 0;
+#X obj 143 23 loadbang;
+#X obj 67 183 s selection;
+#X floatatom 29 196 5 0 0 0 - - -;
+#X obj 39 69 metro 1000;
+#X obj 66 159 mod 30;
+#X obj 39 43 r metrotrigger;
+#X connect 0 0 1 0;
+#X connect 1 0 0 1;
+#X connect 1 0 7 0;
+#X connect 2 0 0 1;
+#X connect 3 0 2 0;
+#X connect 6 0 0 0;
+#X connect 7 0 4 0;
+#X connect 7 0 5 0;
+#X connect 8 0 6 0;
+#X restore 155 52 pd select;
+#X restore 712 362 pd CLODrone;
+#X obj 327 161 hsl 128 15 0 127 0 0 ampvarianceX ampvarianceinput volume_variance
 8 8 0 10 -262144 -1 -1 3000 1;
 #X obj 22 320 hsl 128 15 0 127 0 0 distamtX distamtinput distortion
 8 8 0 10 -262144 -1 -1 2000 1;
@@ -380,45 +442,54 @@ distortion_variance 8 8 0 10 -262144 -1 -1 2000 1;
 #X msg 143 98 659.255;
 #X obj 91 72 loadbang;
 #X obj 503 73 hsl 128 15 0 127 0 0 attackX attackinput attack 8 8 0
-10 -262144 -1 -1 10300 1;
-#X obj 504 95 hsl 128 15 0 127 0 0 decayX decayinput decay 8 8 0 10
+10 -262144 -1 -1 11000 1;
+#X obj 503 95 hsl 128 15 0 127 0 0 decayX decayinput decay 8 8 0 10
 -262144 -1 -1 0 1;
-#X obj 505 118 hsl 128 15 0 127 0 0 sustainlevelX sustainlevelinput
+#X obj 503 118 hsl 128 15 0 127 0 0 sustainlevelX sustainlevelinput
 sustain_level 8 8 0 10 -262144 -1 -1 12700 1;
 #X obj 503 142 hsl 128 15 0 127 0 0 sustaintimeX sustaintimeinput sustain_time
-8 8 0 10 -262144 -1 -1 7500 1;
-#X obj 504 164 hsl 128 15 0 127 0 0 releaseX releaseinput release 8
+8 8 0 10 -262144 -1 -1 12000 1;
+#X obj 503 164 hsl 128 15 0 127 0 0 releaseX releaseinput release 8
 8 0 10 -262144 -1 -1 12500 1;
 #X obj 639 73 nbx 4 14 -1e+37 1e+37 0 0 __nothing attnum empty 0 -8
-0 10 -262144 -1 -1 9.11024 256;
+0 10 -262144 -1 -1 9.66142 256;
 #X obj 640 96 nbx 4 14 -1e+37 1e+37 0 0 __nothing dcynum empty 0 -8
 0 10 -262144 -1 -1 0 256;
 #X obj 639 142 nbx 4 14 -1e+37 1e+37 0 0 __nothing sutnum empty 0 -8
-0 10 -262144 -1 -1 6.90551 256;
+0 10 -262144 -1 -1 10.4488 256;
 #X obj 639 164 nbx 4 14 -1e+37 1e+37 0 0 __nothing relnum empty 0 -8
 0 10 -262144 -1 -1 60.0551 256;
 #X obj 27 217 hsl 128 15 0 127 0 0 fmamtX fmamtinput FM_amount 8 8
 0 10 -262144 -1 -1 12700 1;
 #X obj 161 217 hradio 15 1 0 3 fmamtmulX fmamtmulinput empty 0 -8 0
-10 -262144 -1 -1 1;
+10 -262144 -1 -1 0;
 #X obj 212 217 nbx 5 14 -1e+37 1e+37 0 0 __nothing fmamtnum empty 0
--8 0 10 -262144 -1 -1 10000 256;
+-8 0 10 -262144 -1 -1 1000 256;
 #X obj 53 194 hradio 15 1 0 10 fmcoarseX fmcoarseinput empty 0 -8 0
-10 -262144 -1 -1 5;
+10 -262144 -1 -1 4;
 #X obj 211 195 nbx 4 14 -1e+37 1e+37 0 0 __nothing coarsenum empty
-0 -8 0 10 -262144 -1 -1 4 256;
+0 -8 0 10 -262144 -1 -1 3 256;
 #X obj 27 240 hsl 128 15 0 127 0 0 fmamtvarianceX fmamtvarianceinput
 FM_amount_variance 8 8 0 10 -262144 -1 -1 12700 1;
 #X obj 27 262 hsl 128 15 0 127 0 0 fmcoarsevarianceX fmcoarsevarianceinput
 FM_coarse_variance 8 8 0 10 -262144 -1 -1 12700 1;
+#X obj 332 219 hsl 128 15 0 127 0 0 vibratodepthX vibratodepthinput
+vibrato_depth 8 8 0 10 -262144 -1 -1 500 1;
+#X obj 332 241 hsl 128 15 0 127 0 0 vibratofreqX vibratofreqinput vibrato_frequency
+8 8 0 10 -262144 -1 -1 100 1;
+#X obj 333 265 hsl 128 15 0 127 0 0 vibratodepthvarianceX vibratodepthvarianceinput
+depth_variance 8 8 0 10 -262144 -1 -1 500 1;
+#X obj 333 287 hsl 128 15 0 127 0 0 vibratofreqvarianceX vibratofreqvarianceinput
+frequency_variance 8 8 0 10 -262144 -1 -1 500 1;
+#X text 322 337 todo: monitor \, que se vean los parametros del ultimo
+dron o mas;
 #X connect 2 0 1 0;
 #X connect 3 0 0 0;
 #X connect 6 0 7 0;
-#X connect 9 0 8 0;
-#X connect 15 0 14 0;
+#X connect 14 0 13 0;
+#X connect 20 0 10 0;
 #X connect 21 0 11 0;
 #X connect 22 0 12 0;
-#X connect 23 0 13 0;
-#X connect 24 0 21 0;
-#X connect 24 0 22 0;
-#X connect 24 0 23 0;
+#X connect 23 0 20 0;
+#X connect 23 0 21 0;
+#X connect 23 0 22 0;
